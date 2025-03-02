@@ -1,0 +1,43 @@
+:root{
+    --psand-light:##E1DAD0;
+    --begie:#b3a072;
+    --brown:#605948;
+    --dark-brown:#301E1E;
+    --antiquewhite:#faebd7;
+    --black:#000;
+    --white:#fff;
+    --text-color:rgb(22,24,35);
+}
+
+html{
+    font-size: 62.5%;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Roboto", serif;
+    font-size: 1.6rem;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+button, input, [tabindex]{
+    outline: none;
+    border: none;
+}
+
+button{
+    background-color: transparent;
+    cursor: pointer;
+}
+
+a[href]{
+    color: var(--text-color);
+    text-decoration: none;
+}
