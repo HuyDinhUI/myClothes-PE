@@ -1,0 +1,76 @@
+.wrapper{
+    --width-default:1460px;
+    --width-grid:calc(730px - calc(0.5rem/2));
+    margin-top: 20px;
+    
+}
+
+.container{
+    width: var(--width-default);
+    
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    
+
+    .standout{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 5px;
+        grid-row-gap: 5px;
+        height: 605px;
+
+        .standout-1 { 
+            grid-area: 1 / 1 / 4 / 4; 
+            background-color: var(--sand-light);
+            border-radius: 20px;
+
+
+            .heading-standout{
+                padding:20px;
+                
+                .slogan{
+                    font-size: 50px;
+                    font-family: var(--font-brand-heading);
+                }
+
+                .para-slogan{
+                    margin-top: 100px;
+                }
+
+
+            }
+        }
+        .standout-2 { 
+            grid-area: 1 / 4 / 6 / 7; 
+
+            .img-standout{
+                background-image: url('https://i.imgur.com/aDq8IFd.jpeg');
+                height: 100%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                border-radius: 20px;
+            }
+        }
+        .standout-3 { 
+            grid-area: 4 / 1 / 6 / 4; 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 5px;
+
+            .navigate-standout:nth-child(1){
+                background-color: var(--brown);
+                border-radius: 20px;
+            }
+            .navigate-standout:nth-child(2){
+                background-color: var(--dark-brown);
+                border-radius: 20px;
+            }
+        }
+    }
+
+}
+    

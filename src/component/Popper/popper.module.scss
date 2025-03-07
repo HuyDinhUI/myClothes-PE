@@ -1,0 +1,27 @@
+.wrapper{
+    
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: white;
+}
+
+.container{
+    width: 300px;
+    height: 400px;
+    box-sizing: border-box;
+    overflow: clip hidden;
+    overscroll-behavior: contain;
+}
+
+.content{
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    gap:1.2rem;
+
+    .search{
+        width: 100%;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 5px;
+        
+    }
+}

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import styles from "./header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping,faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
+import Popper from "../../../Popper";
+
 const Header = () => {
   return (
     <div className={styles.wrapper}>
@@ -20,11 +25,15 @@ const Header = () => {
         </div>
         <div className={styles.actions}>
           <div className={styles["actions-item"]}>
-            {/* <FontAwesomeIcon className={styles["icon-search"]} icon={faMagnifyingGlass}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faUser}></FontAwesomeIcon> */}
-            <button className={styles["Signup-btn"]}>Sign up</button>
-            <button className={styles["Login-btn"]}>Log in</button>
-            
+            <Popper>
+              <FontAwesomeIcon
+                className={styles["icon-search"]}
+                icon={faMagnifyingGlass}
+              ></FontAwesomeIcon>
+            </Popper>
+            <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+            {/* <button className={styles["Signup-btn"]}>Sign up</button>
+            <button className={styles["Login-btn"]}>Log in</button> */}
           </div>
         </div>
       </div>
