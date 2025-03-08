@@ -1,76 +1,291 @@
-.wrapper{
-    --width-default:1460px;
-    --width-grid:calc(730px - calc(0.5rem/2));
-    margin-top: 20px;
-    
+.wrapper {
+  --width-default: 1460px;
+  --width-grid: calc(730px - calc(0.5rem / 2));
+  margin-top: 20px;
 }
 
-.container{
-    width: var(--width-default);
-    
+.container {
+  width: var(--width-default);
 }
 
-.content{
-    display: flex;
-    flex-direction: column;
-    
+.content {
+  display: flex;
+  flex-direction: column;
 
-    .standout{
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        grid-column-gap: 5px;
-        grid-row-gap: 5px;
-        height: 605px;
+  /*================= STANDOUT =======================*/
+  .standout {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    height: 605px;
 
-        .standout-1 { 
-            grid-area: 1 / 1 / 4 / 4; 
-            background-color: var(--sand-light);
-            border-radius: 20px;
+    .standout-1 {
+      grid-area: 1 / 1 / 4 / 4;
+      background-color: var(--sand-light);
+      border-radius: 20px;
 
+      .heading-standout {
+        padding: 20px;
 
-            .heading-standout{
-                padding:20px;
-                
-                .slogan{
-                    font-size: 50px;
-                    font-family: var(--font-brand-heading);
-                }
-
-                .para-slogan{
-                    margin-top: 100px;
-                }
-
-
-            }
+        .slogan {
+          font-size: 50px;
+          font-family: var(--font-brand-heading);
         }
-        .standout-2 { 
-            grid-area: 1 / 4 / 6 / 7; 
 
-            .img-standout{
-                background-image: url('https://i.imgur.com/aDq8IFd.jpeg');
-                height: 100%;
-                background-size: cover;
-                background-repeat: no-repeat;
-                border-radius: 20px;
-            }
+        .para-slogan {
+          margin-top: 100px;
         }
-        .standout-3 { 
-            grid-area: 4 / 1 / 6 / 4; 
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-column-gap: 5px;
+      }
+    }
+    .standout-2 {
+      grid-area: 1 / 4 / 6 / 7;
 
-            .navigate-standout:nth-child(1){
-                background-color: var(--brown);
-                border-radius: 20px;
-            }
-            .navigate-standout:nth-child(2){
-                background-color: var(--dark-brown);
-                border-radius: 20px;
-            }
-        }
+      .img-standout {
+        background-image: url("https://i.imgur.com/aDq8IFd.jpeg");
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 20px;
+      }
+    }
+    .standout-3 {
+      grid-area: 4 / 1 / 6 / 4;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 5px;
+
+      .navigate-standout:nth-child(1) {
+        background-color: var(--brown);
+        border-radius: 20px;
+      }
+      .navigate-standout:nth-child(2) {
+        background-color: var(--dark-brown);
+        border-radius: 20px;
+      }
+    }
+  }
+  /*======================== END STANDOUT =======================*/
+
+  /*======================== BESTSELLER =========================*/
+
+  .bestseller {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 700px;
+
+    .heading-seller {
+      grid-area: 1 / 1 / 2 / 7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .title-seller {
+        font-family: var(--font-brand-heading);
+        font-size: 50px;
+        text-align: center;
+      }
     }
 
+    .product-seller {
+      grid-area: 2 / 2 / 3 / 6;
+
+      .list-product {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        height: 100%;
+        grid-column-gap: 5px;
+      }
+
+      .container-product {
+        border: 2px solid black;
+        border-radius: 20px;
+        padding: 10px;
+
+        .img-product {
+          background-size: cover;
+          background-repeat: no-repeat;
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+
+  /*=================== END BESTSELLER ================*/
+
+  /*=================== SALE OFF ==================*/
+
+  .saleOff {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    height: 800px;
+    margin-top: 100px;
+
+    .heading-saleOff {
+      height: 100%;
+      grid-area: 1 / 2 / 3 / 6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: var(--font-brand-heading);
+      font-size: 40px;
+    }
+    .title-saleOff-1 {
+      height: 100%;
+      grid-area: 3 / 2 / 6 / 4;
+      border: 2px solid black;
+      font-family: var(--font-brand-heading);
+      font-size: 50px;
+      color: var(--black);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .shoes {
+      height: 100%;
+      grid-area: 3 / 4 / 6 / 5;
+    }
+    .spare {
+      height: 100%;
+      grid-area: 3 / 5 / 6 / 6;
+    }
+    .tshirt {
+      height: 100%;
+
+      grid-area: 6 / 2 / 9 / 3;
+    }
+    .pants {
+      height: 100%;
+      grid-area: 6 / 3 / 9 / 4;
+    }
+    .title-saleOff-2 {
+      height: 100%;
+      grid-area: 6 / 4 / 9 / 6;
+      border: 2px solid black;
+      font-family: var(--font-brand-heading);
+      font-size: 50px;
+      color: var(--black);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title-saleOff-1,
+    .title-saleOff-2 {
+      border-radius: 20px;
+    }
+
+    .shoes,
+    .tshirt,
+    .pants,
+    .spare {
+      background-size: cover;
+      border-radius: 20px;
+      position: relative;
+      border: 2px solid black;
+      padding: 10px;
+    }
+
+    .img-type {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      filter: brightness(60%);
+    }
+
+    .title-type {
+      position: absolute;
+      font-family: var(--font-brand-heading);
+      font-size: 35px;
+      color: transparent;
+      -webkit-text-stroke: 0.1px white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  /*====================== END SALE OFF =====================*/
+
+  /*====================== REGISTER ========================*/
+  .register {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    height: 550px;
+    margin-top: 100px;
+
+    .heading-register {
+      grid-area: 1 / 1 / 3 / 7;
+      font-family: var(--font-brand-heading);
+      font-size: 50px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .voucher-register {
+      grid-area: 3 / 2 / 7 / 6;
+      position: relative;
+
+      .content-voucher {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-column-gap: 5px;
+
+        .title-voucher{
+            color: var(--white);
+            font-family: var(--font-brand-heading);
+            font-size: 70px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .form-register{
+            width: 70%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+
+            .input-register{
+                width: 100%;
+                padding: 10px;
+                border: 2px solid var(--white);
+                background-color: transparent;
+                color: var(--white);
+            }
+
+            .btn-register{
+                background-color: var(--white);
+                color:var(--black);
+                width: 100%;
+                padding: 10px;
+                font-family: var(--font-brand-heading);
+            }
+        }
+      }
+    }
+
+  }
 }
-    
