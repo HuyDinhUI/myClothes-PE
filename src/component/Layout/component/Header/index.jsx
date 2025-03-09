@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,8 +7,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import Popper from "../../../Popper";
+import { Navigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate()
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -31,7 +34,7 @@ const Header = () => {
                 icon={faMagnifyingGlass}
               ></FontAwesomeIcon>
             </Popper>
-            <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+            <FontAwesomeIcon onClick={() => navigate('/dashboards')} icon={faUser}></FontAwesomeIcon>
             {/* <button className={styles["Signup-btn"]}>Sign up</button>
             <button className={styles["Login-btn"]}>Log in</button> */}
           </div>

@@ -2,6 +2,12 @@ import styles from "./home.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {} from "@fortawesome/free-solid-svg-icons";
 import {} from "@fortawesome/free-regular-svg-icons";
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
+import withAutoplay from 'react-awesome-slider/dist/autoplay';
+
+const AutoplaySlider = withAutoplay(AwesomeSlider);
+
 
 const Home = () => {
   const productSeller = [
@@ -87,14 +93,24 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className={styles.saleOff}>
-            <div className={styles["heading-saleOff"]}>
-              <FontAwesomeIcon></FontAwesomeIcon>
-              <h2>SALE OFF</h2>
+          <div className={styles.banner}>
+            <div className={styles["banner-slider"]}>
+              <AutoplaySlider 
+               play={true}
+               cancelOnInteraction={false}
+               interval={6000}
+              >
+                <div data-src='https://i.pinimg.com/736x/f0/39/02/f039021792dd18322970d4023362f060.jpg'>1</div>
+                <div data-src='https://i.pinimg.com/736x/61/79/75/6179750e973e5360ccc59e7d8fe4ea5e.jpg'>2</div>
+                <div data-src='https://i.pinimg.com/736x/f8/ec/93/f8ec933e19e32f9c159f4de83a72ae55.jpg'>3</div>
+                <div data-src='https://i.pinimg.com/736x/2d/95/b5/2d95b5c6697f62daaef4c61112012c1c.jpg'>4</div>
+              </AutoplaySlider>
             </div>
+          </div>
+          <div className={styles.saleOff}>
             <div className={styles["title-saleOff-1"]}>
               <h3>
-                ALL <br></br> TYPES
+                SALE <br></br> OFF
               </h3>
             </div>
             <div className={styles["shoes"]}>
@@ -102,28 +118,28 @@ const Home = () => {
                 src="https://i.imgur.com/3WN4rvb.jpg"
                 className={styles["img-type"]}
               ></img>
-              <h3 className={styles["title-type"]}>SHOES</h3>
+              <h3 className={styles["title-type"]}>SHOES -50%</h3>
             </div>
             <div className={styles["spare"]}>
               <img
                 src="https://i.imgur.com/tqzkB80.jpg"
                 className={styles["img-type"]}
               ></img>
-              <h3 className={styles["title-type"]}>SPARE</h3>
+              <h3 className={styles["title-type"]}>SPARE -55%</h3>
             </div>
             <div className={styles["tshirt"]}>
               <img
                 src="https://i.imgur.com/mKtPXLi.jpg"
                 className={styles["img-type"]}
               ></img>
-              <h3 className={styles["title-type"]}>TSHIRT</h3>
+              <h3 className={styles["title-type"]}>TSHIRT -60%</h3>
             </div>
             <div className={styles["pants"]}>
               <img
                 src="https://i.imgur.com/FkpnP0v.jpg"
                 className={styles["img-type"]}
               ></img>
-              <h3 className={styles["title-type"]}>PANTS</h3>
+              <h3 className={styles["title-type"]}>PANTS -65%</h3>
             </div>
             <div className={styles["title-saleOff-2"]}>
               <h3>
@@ -133,8 +149,9 @@ const Home = () => {
           </div>
           <div className={styles.register}>
             <div className={styles["heading-register"]}>
-              <h3>REGISTER TO <br></br> RECEIVE VOUCHER</h3>
+              <h3 className={styles["title-register"]}>VOUCHER FOR NEWBIES</h3>
             </div>
+
             <div className={styles["voucher-register"]}>
               <svg
                 width="970"
@@ -151,8 +168,16 @@ const Home = () => {
                 />
               </svg>
               <div className={styles["content-voucher"]}>
-                <h3 className={styles["title-voucher"]}>50%</h3>
+                <h3 className={styles["title-voucher"]}>
+                  REGISTER TO RECEIVE VOUCHER <br></br> 50%
+                </h3>
                 <form className={styles["form-register"]}>
+                  <input
+                    name="username"
+                    type="username"
+                    placeholder="enter your username"
+                    className={styles["input-register"]}
+                  ></input>
                   <input
                     name="email"
                     type="email"
@@ -170,11 +195,8 @@ const Home = () => {
                     type="password"
                     placeholder="confirm password"
                     className={styles["input-register"]}
-                  >
-                  </input>
-                  <button className={styles["btn-register"]}>
-                    SUBMIT
-                  </button>
+                  ></input>
+                  <button className={styles["btn-register"]}>SUBMIT</button>
                 </form>
               </div>
             </div>

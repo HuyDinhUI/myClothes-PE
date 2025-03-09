@@ -105,6 +105,12 @@
         border: 2px solid black;
         border-radius: 20px;
         padding: 10px;
+        transition: 0.5s;
+        cursor: pointer;
+
+        &:hover {
+          transform: translateY(-10px);
+        }
 
         .img-product {
           background-size: cover;
@@ -119,34 +125,38 @@
 
   /*=================== END BESTSELLER ================*/
 
+  .banner {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    margin-top: 50px;
+
+    .banner-slider {
+      grid-area: 1 / 2 / 7 / 6;
+
+      
+    }
+  }
+
   /*=================== SALE OFF ==================*/
 
   .saleOff {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     grid-column-gap: 5px;
     grid-row-gap: 5px;
-    height: 800px;
+    height: 700px;
     margin-top: 100px;
 
-    .heading-saleOff {
-      height: 100%;
-      grid-area: 1 / 2 / 3 / 6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-family: var(--font-brand-heading);
-      font-size: 40px;
-    }
     .title-saleOff-1 {
-      height: 100%;
-      grid-area: 3 / 2 / 6 / 4;
+      height: 80%;
+      grid-area: 1 / 2 / 4 / 4;
       border: 2px solid black;
       font-family: var(--font-brand-heading);
       font-size: 50px;
-      color: var(--black);
+      -webkit-text-stroke: 0.1px var(--black);
+      color: transparent;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -154,28 +164,29 @@
     }
     .shoes {
       height: 100%;
-      grid-area: 3 / 4 / 6 / 5;
+      grid-area: 4 / 2 / 7 / 3;
     }
     .spare {
       height: 100%;
-      grid-area: 3 / 5 / 6 / 6;
+      grid-area: 4 / 3 / 7 / 4;
     }
     .tshirt {
       height: 100%;
 
-      grid-area: 6 / 2 / 9 / 3;
+      grid-area: 4 / 4 / 7 / 5;
     }
     .pants {
       height: 100%;
-      grid-area: 6 / 3 / 9 / 4;
+      grid-area: 4 / 5 / 7 / 6;
     }
     .title-saleOff-2 {
-      height: 100%;
-      grid-area: 6 / 4 / 9 / 6;
-      border: 2px solid black;
+      height: 80%;
+      grid-area: 1 / 4 / 4 / 6;
+      -webkit-text-stroke: 0.1px white;
+      background-color: var(--black);
       font-family: var(--font-brand-heading);
       font-size: 50px;
-      color: var(--black);
+      color: transparent;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -185,6 +196,7 @@
     .title-saleOff-1,
     .title-saleOff-2 {
       border-radius: 20px;
+      margin-top: 60px;
     }
 
     .shoes,
@@ -196,6 +208,12 @@
       position: relative;
       border: 2px solid black;
       padding: 10px;
+      transition: 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        transform: rotateZ(-3deg);
+      }
     }
 
     .img-type {
@@ -209,6 +227,7 @@
       position: absolute;
       font-family: var(--font-brand-heading);
       font-size: 35px;
+      text-align: center;
       color: transparent;
       -webkit-text-stroke: 0.1px white;
       top: 50%;
@@ -224,18 +243,44 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-column-gap: 5px;
-    grid-row-gap: 5px;
+
     height: 550px;
     margin-top: 100px;
 
     .heading-register {
-      grid-area: 1 / 1 / 3 / 7;
+      grid-area: 1/2/3/6;
       font-family: var(--font-brand-heading);
-      font-size: 50px;
+      font-size: 30px;
       text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background-color: var(--black);
+
+      color: var(--white);
+      margin: auto;
+      padding: 20px 0;
+      width: 100%;
+      height: 60%;
+      border-radius: 20px;
+      margin-top: 50px;
+      position: relative;
+      align-self: flex-end;
+
+      .title-register {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+      }
+
+      &::after {
+        content: "";
+        width: 100%;
+        border-top: 4px dashed var(--black);
+        transform: translate(0, 0);
+        position: absolute;
+        left: 0;
+        bottom: -12px;
+      }
     }
 
     .voucher-register {
@@ -246,46 +291,55 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        top:0;
+        top: 0;
         display: grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-column-gap: 5px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 20px;
 
-        .title-voucher{
-            color: var(--white);
-            font-family: var(--font-brand-heading);
-            font-size: 70px;
-            text-align: center;
-            margin: auto;
+        .title-voucher {
+          color: var(--white);
+          font-family: var(--font-brand-heading);
+          font-size: 40px;
+          text-align: right;
+          margin: auto;
         }
 
-        .form-register{
-            width: 70%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+        .form-register {
+          width: 70%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
 
-            .input-register{
-                width: 100%;
-                padding: 10px;
-                border: 2px solid var(--white);
-                background-color: transparent;
-                color: var(--white);
-            }
+          .input-register {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--white);
+            background-color: transparent;
+            color: var(--white);
 
-            .btn-register{
-                background-color: var(--white);
-                color:var(--black);
-                width: 100%;
-                padding: 10px;
-                font-family: var(--font-brand-heading);
+            &:focus {
+              background-color: var(--sand-light);
+              color: var(--black);
             }
+          }
+
+          .btn-register {
+            background-color: var(--white);
+            color: var(--black);
+            width: 100%;
+            padding: 10px;
+            font-family: var(--font-brand-heading);
+            transition: 0.5s;
+
+            &:hover {
+              padding: 15px 0;
+            }
+          }
         }
       }
     }
-
   }
 }
