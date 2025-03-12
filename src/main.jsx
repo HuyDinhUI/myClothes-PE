@@ -9,7 +9,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GlobalStyles>
       <App />
-      <ToastContainer position="top-right" theme="colored" />
+      <ToastContainer position="top-center" theme="colored" />
     </GlobalStyles>
   </StrictMode>,
 )

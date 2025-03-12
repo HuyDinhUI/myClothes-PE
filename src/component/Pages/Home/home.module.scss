@@ -252,9 +252,10 @@
       font-family: var(--font-brand-heading);
       font-size: 30px;
       text-align: center;
-      background-color: var(--black);
+      background-color: transparent;
+      border: 2px solid var(--black);
 
-      color: var(--white);
+      color: var(--black);
       margin: auto;
       padding: 20px 0;
       width: 100%;

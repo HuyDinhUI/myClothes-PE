@@ -54,3 +54,23 @@ a[href]{
 h1,h2,h3,h4,p{
     margin: 0;
 }
+
+.awssld {
+
+    --slider-height-percentage: 50%;
+    --slider-transition-duration: 500ms;
+    --organic-arrow-thickness: 4px;
+    --organic-arrow-border-radius: 0px;
+    --organic-arrow-height: 40px;
+    --organic-arrow-color: var(--white);
+    --control-button-width: 10%;
+    --control-button-height: 25%;
+    --control-button-background: transparent;
+    --control-bullet-color: var(--black);
+    --control-bullet-active-color: var(--begie);
+    --loader-bar-color: var(--white);
+    --loader-bar-height: 6px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+

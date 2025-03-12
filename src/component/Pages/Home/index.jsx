@@ -101,7 +101,7 @@ const Home = () => {
                interval={6000}
               >
                 <div data-src='https://i.pinimg.com/736x/f0/39/02/f039021792dd18322970d4023362f060.jpg'>1</div>
-                <div data-src='https://i.pinimg.com/736x/61/79/75/6179750e973e5360ccc59e7d8fe4ea5e.jpg'>2</div>
+                <div data-src='https://i.pinimg.com/736x/df/a1/9a/dfa19aee94e4b97c3238f63d4aaeb1af.jpg'>2</div>
                 <div data-src='https://i.pinimg.com/736x/f8/ec/93/f8ec933e19e32f9c159f4de83a72ae55.jpg'>3</div>
                 <div data-src='https://i.pinimg.com/736x/2d/95/b5/2d95b5c6697f62daaef4c61112012c1c.jpg'>4</div>
               </AutoplaySlider>
@@ -164,7 +164,7 @@ const Home = () => {
                   fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M0 18C0 8.05888 8.05888 0 18 0H952C961.941 0 970 8.05888 970 18V135.003C969.834 135.001 969.667 135 969.5 135C943.266 135 922 156.266 922 182.5C922 208.734 943.266 230 969.5 230C969.667 230 969.834 229.999 970 229.997V347C970 356.941 961.941 365 952 365H18C8.05889 365 0 356.941 0 347V229.997C26.0032 229.729 47 208.567 47 182.5C47 156.433 26.0032 135.271 0 135.003V18Z"
-                  fill="#2c2c2c"
+                  fill="#605948"
                 />
               </svg>
               <div className={styles["content-voucher"]}>
