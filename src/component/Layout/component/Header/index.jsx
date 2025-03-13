@@ -8,6 +8,7 @@ import {
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import Popper from "../../../Popper";
 import { Navigate } from "react-router-dom";
+import {SearchIcon,ContactsIcon} from '@bitcoin-design/bitcoin-icons-react/outline'
 
 const Header = () => {
   const navigate = useNavigate()
@@ -29,12 +30,11 @@ const Header = () => {
         <div className={styles.actions}>
           <div className={styles["actions-item"]}>
             <Popper>
-              <FontAwesomeIcon
+              <SearchIcon
                 className={styles["icon-search"]}
-                icon={faMagnifyingGlass}
-              ></FontAwesomeIcon>
+              ></SearchIcon>
             </Popper>
-            <FontAwesomeIcon onClick={() => navigate('/dashboards')} icon={faUser}></FontAwesomeIcon>
+            <ContactsIcon onClick={() => navigate('/dashboards')}></ContactsIcon>
             {/* <button className={styles["Signup-btn"]}>Sign up</button>
             <button className={styles["Login-btn"]}>Log in</button> */}
           </div>

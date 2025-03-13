@@ -4,6 +4,7 @@ import Product from '../Pages/Product/index'
 import ShopLayout from '../Layout/ShopLayout';
 import Login from '../Pages/Login';
 import Dashboards from '../Pages/Dashboards'
+import DashBoardLayout from '../Layout/DashboardLayout/index'
 
 
 const publicRoutes = [
@@ -29,7 +30,8 @@ const publicRoutes = [
     {
       path:"/dashboards",
       component:Dashboards,
-      protectedRoute: true
+      protectedRoute: true,
+      layout:DashBoardLayout
     }
   
   ];

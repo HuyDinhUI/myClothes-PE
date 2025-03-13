@@ -1,5 +1,6 @@
 import authorizedAxiosInstance from "../../../utils/AthorizedAxios";
 import { useEffect, useState } from "react";
+import styles from './dashboards.module.scss'
 
 const Dashboards = () => {
   const [user,setUser] = useState(null)
@@ -21,7 +22,15 @@ const Dashboards = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
   };
-  return <button onClick={logout}>logout</button>;
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          
+        </div>
+      </div>
+    </div>
+  )
 };
 
 export default Dashboards;

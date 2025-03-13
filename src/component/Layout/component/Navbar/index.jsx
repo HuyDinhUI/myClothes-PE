@@ -1,8 +1,14 @@
 import styles from './navbar.module.scss'
 
-const Navbar = () =>{
+const Navbar = ({children}) =>{
     return (
-        <h1>Navbar</h1>
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
+                <div className={styles.content}>
+                    {children}
+                </div>
+            </div>
+        </div>
     )
 }
 

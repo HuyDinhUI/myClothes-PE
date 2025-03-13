@@ -1,0 +1,45 @@
+.item-user{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+
+    .btn-item{
+        display: flex;
+        align-self: flex-start;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        font-size: 20px;
+        border: 1px solid black;
+        border-radius: 15px;
+        transition: 0.5s;
+
+
+    &:hover{
+        background-color: var(--black);
+        color:var(--white);
+
+    }
+        
+        .icon{
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            
+        }
+
+        .title{
+            margin-left: 10px;
+        }
+
+    }
+
+}
