@@ -4,10 +4,23 @@ import styles from "./dashboards.module.scss";
 import Info from "../Dashboards/Info";
 import Cart from "../Dashboards/Cart";
 import { ContentContext } from "../../../utils/ContentContext";
+import { useNavigate } from "react-router-dom";
 
 const Dashboards = () => {
   const [user, setUser] = useState(null);
   const { Content } = useContext(ContentContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+        if (Content === 'Log out'){
+          localStorage.removeItem("userInfo");
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+          navigate("/login");
+        }
+        
+     
+  }, [Content]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +34,6 @@ const Dashboards = () => {
     fetchData();
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>

@@ -1,5 +1,6 @@
 import styles from './navbar.module.scss'
 
+
 const Navbar = ({children}) =>{
     return (
         <div className={styles.wrapper}>

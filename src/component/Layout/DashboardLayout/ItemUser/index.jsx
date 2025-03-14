@@ -10,6 +10,8 @@ import {
   ExitIcon,
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { ContentContext } from "../../../../utils/ContentContext";
+
+
 const Item = [
   {
     title: "Home",
@@ -38,8 +40,10 @@ const Item = [
   {
     title: "Log out",
     icon: <ExitIcon />,
+    
   },
 ];
+
 const ItemUser = () => {
   const { Content, setContent } = useContext(ContentContext);
   return (

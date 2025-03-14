@@ -19,7 +19,7 @@ const Header = () => {
         <h1 className={styles.title}>MyClothes</h1>
         <div className={styles.navbar}>
           <div className={styles["navbar-container"]}>
-            <Link className={styles["nav-link"]}>HOME</Link>
+            <Link to='/' className={styles["nav-link"]}>HOME</Link>
             <Link className={styles["nav-link"]}>SHOP</Link>
             <Link className={styles["nav-link"]}>ABOUT</Link>
             <Link className={styles["nav-link"]}>DISCOVER</Link>
@@ -34,7 +34,7 @@ const Header = () => {
                 className={styles["icon-search"]}
               ></SearchIcon>
             </Popper>
-            <ContactsIcon onClick={() => navigate('/dashboards')}></ContactsIcon>
+            <ContactsIcon className={styles.info} onClick={() => navigate('/dashboards')}></ContactsIcon>
             {/* <button className={styles["Signup-btn"]}>Sign up</button>
             <button className={styles["Login-btn"]}>Log in</button> */}
           </div>
