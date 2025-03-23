@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import styles from "./cart.module.scss";
 import { motion } from "framer-motion";
 
@@ -137,7 +137,15 @@ const itemVariants = {
 
 const Cart = () => {
   const [selected, setSelected] = useState([]);
-  console.log(selected);
+  const [carts, setCarts] = useState(cart);
+  
+  console.log("List selected:", selected);
+  console.log("List proudcts:", carts);
+
+  const DeleteProductCart = () => {
+    setCarts(carts.filter(p => !selected.find((select) => select.id === p.id)))
+    setSelected([]);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -149,7 +157,7 @@ const Cart = () => {
             animate="visible"
             variants={containerVariants}
           >
-            {cart.map((pr, index) => {
+            {carts.map((pr, index) => {
               return (
                 <motion.div
                   onClick={() => {
@@ -167,7 +175,7 @@ const Cart = () => {
                           priceOld: pr.priceOld,
                           priceNew: pr.priceNew,
                           amount: pr.amount,
-                          type: pr.type,
+                          size: pr.size,
                         },
                       ]);
                   }}
@@ -201,7 +209,7 @@ const Cart = () => {
       </div>
       <div className={styles["payment-actions"]}>
         <div className={styles["actions-cart"]}>
-          <div className={styles.delete}>
+          <div onClick={DeleteProductCart} className={styles.delete}>
             <div className={styles["delete-icon"]}>
               <TrashIcon />
             </div>
