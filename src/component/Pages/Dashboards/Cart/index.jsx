@@ -1,6 +1,13 @@
 import { useState } from "react";
 import styles from "./cart.module.scss";
-import { TrashIcon, CheckIcon } from "@bitcoin-design/bitcoin-icons-react/outline";
+import { motion } from "framer-motion";
+
+import {
+  TrashIcon,
+  CheckIcon,
+  TagIcon,
+  ExchangeIcon,
+} from "@bitcoin-design/bitcoin-icons-react/outline";
 
 const cart = [
   {
@@ -113,6 +120,21 @@ const cart = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1, // Các item xuất hiện cách nhau 0.5s
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const Cart = () => {
   const [selected, setSelected] = useState([]);
   console.log(selected);
@@ -121,10 +143,15 @@ const Cart = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.products}>
+          <motion.div
+            className={styles.products}
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
             {cart.map((pr, index) => {
               return (
-                <div
+                <motion.div
                   onClick={() => {
                     if (selected.find((select) => select.id === pr.id)) {
                       setSelected(
@@ -154,6 +181,7 @@ const Cart = () => {
                   }
                   key={index}
                   className={styles["container-product"]}
+                  variants={itemVariants}
                 >
                   <img src={pr.img} className={styles["img-product"]}></img>
                   <div className={styles["info-product"]}>
@@ -165,22 +193,53 @@ const Cart = () => {
                     <p className={styles.amount}>{pr.amount}x</p>
                     <p className={styles.size}>{pr.size}</p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className={styles["payment-actions"]}>
         <div className={styles["actions-cart"]}>
           <div className={styles.delete}>
-            <div className={styles["delete-icon"]}><TrashIcon/></div>
+            <div className={styles["delete-icon"]}>
+              <TrashIcon />
+            </div>
             <p className={styles["delete-title"]}>Delete</p>
           </div>
-          <div className={styles.selectAll}>
-            <div className={styles["selectAll-icon"]}><CheckIcon/></div>
+          <div className={styles.vouchers}>
+            <div className={styles["voucher-icon"]}>
+              <TagIcon />
+            </div>
+            <input className={styles["voucher-title"]}></input>
+          </div>
+          <div
+            onClick={() => {
+              if (selected.length > 0) {
+                setSelected([]);
+              } else setSelected(cart);
+            }}
+            className={styles.selectAll}
+          >
+            <div className={styles["selectAll-icon"]}>
+              <CheckIcon />
+            </div>
             <p className={styles["selectAll-title"]}>Select All</p>
           </div>
+          <div className={styles.sumPrice}>
+            <div className={styles["sumPrice-icon"]}>
+              <ExchangeIcon />
+            </div>
+            <p className={styles["sumPrice-title"]}>
+              {selected
+                .reduce((acc, curr) => acc + curr.priceNew * curr.amount, 0)
+                .toFixed(2)}
+              $
+            </p>
+          </div>
+        </div>
+        <div className={styles["btn-payment"]}>
+          <p className={styles["payment-title"]}>Payment</p>
         </div>
       </div>
     </div>

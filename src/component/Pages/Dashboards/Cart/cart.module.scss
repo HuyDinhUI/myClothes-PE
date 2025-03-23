@@ -1,3 +1,5 @@
+
+
 .wrapper {
   width: 100%;
   height: 100%;
@@ -10,7 +12,7 @@
 
 .container {
   width: 100%;
-  height: 100%;
+  height: 150%;
 }
 
 .content {
@@ -24,102 +26,169 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap:10px;
+    gap: 10px;
     
+    @keyframes zoomIn {
+      from{
+        transform: scale(0);
+      }
+      to{
+        transform: scale(1);
+      }
+    }
 
-    .container-product{
-        width: 100%;
-        height: 100%;
+    @keyframes faded {
+      from{
+        opacity: 0;
+      }
+      to{
+        opacity: 100%;
+      }
+    }
+
+    .container-product {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      gap: 5px;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      padding: 10px;
+      cursor: pointer;
+      position: relative;
+      transition: 0.5s;
+      border-radius: 15px;
+      
+
+      &:hover {
+        background-color: var(--antiquewhite);
+      }
+
+      .img-product {
+        width: 120px;
+        height: 200px;
+        border-radius: 15px;
+        border: 2px solid var(--white);
+      }
+
+      .info-product {
+        flex: 1;
+      }
+
+      .title {
+        font-size: 20px;
+        font-family: var(--font-brand-heading);
+      }
+
+      .amount {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+      }
+
+      .prices {
         display: flex;
         gap: 5px;
-        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-        padding: 10px;
-        cursor: pointer;
-        position: relative;
-        transition: 0.5s;
-        border-radius: 15px;
+        position: absolute;
+        bottom: 5px;
 
-        &:hover{
-            background-color: var(--antiquewhite);
+        .priceOld {
+          text-decoration: line-through;
         }
-        
-
-        .img-product{
-            width: 120px;
-            height: 200px;
-            border-radius: 15px;
-            border: 2px solid var(--white);
-        }
-
-        .info-product{
-            flex: 1;
-        }
-
-        .title{
-            font-size: 20px;
-            font-family: var(--font-brand-heading);
-        }
-
-        .amount{
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-        }
-
-        .prices{
-            display: flex;
-            gap: 5px;
-            position: absolute;
-            bottom: 5px;
-
-            .priceOld{
-                text-decoration: line-through;
-            }
-
-           
-            
-        }
+      }
     }
   }
 }
 
-.payment-actions{
-    width: 100%;
-    height: 150px;
-    background-color: black;
-    position: sticky;
-    bottom: 0;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+.payment-actions {
+  width: 100%;
+  height: 150px;
+  background-color: black;
+  position: sticky;
+  bottom: 0;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  .actions-cart {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+    padding: 20px;
+  }
 
-    .actions-cart{
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        padding: 20px;
+  .delete,
+  .selectAll,
+  .vouchers,
+  .sumPrice {
+    width: 100%;
+    height: 50px;
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 10px;
+    
+
+    .delete-icon,
+    .selectAll-icon,
+    .voucher-icon,
+    .sumPrice-icon {
+      width: 30px;
+      height: 30px;
     }
 
-    .delete,.selectAll{
-        width: 150px;
-        height: 50px;
-        color: var(--white);
-        border: 1px solid var(--white);
-        padding:10px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
+    .delete-title,
+    .selectAll-title,
+    .sumPrice-title {
+      height: 100%;
+      margin-top: 5px;
+    }
 
-        .delete-icon, .selectAll-icon{
-            width: 30px;
-            height: 30px;
-        }
+    .voucher-title {
+      width: 100px;
+      height: 100%;
+      background-color: transparent;
+      color: var(--white);
+      border-bottom: 1px solid var(--white);
+    }
+  }
+  .delete,
+  .selectAll {
+    transition: 0.5s;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--white);
+      color: black;
+    }
+  }
+  
+  .btn-payment{
+    grid-area: 1 / 3 / 2 / 4;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
 
-        .delete-title, .selectAll-title{
-            height: 100%;
-            margin-top: 5px;
+    .payment-title{
+        background-color: var(--sand-light);
+        height: 100%;
+        width: 100%;
+        font-size: 30px;
+        padding: 40px;
+        text-align: center;
+        font-family: var(--font-brand-heading);
+        border-bottom-right-radius: 15px;
+        transition: 0.5s;
+
+        &:hover{
+            background-color: var(--antiquewhite);
         }
     }
+  }
 }
