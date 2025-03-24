@@ -120,6 +120,15 @@ const cart = [
   },
 ];
 
+const vouchers = [
+  {
+    code: "abcd",
+    name: "",
+    effect: "",
+    interst: 0.5,
+  },
+];
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -138,13 +147,36 @@ const itemVariants = {
 const Cart = () => {
   const [selected, setSelected] = useState([]);
   const [carts, setCarts] = useState(cart);
-  
+  const [interst, setInterst] = useState(0);
+  const [codeVoucher, setCodeVoucher] = useState();
+  const [checkVoucher, setCheckVoucher] = useState();
+
   console.log("List selected:", selected);
   console.log("List proudcts:", carts);
 
   const DeleteProductCart = () => {
-    setCarts(carts.filter(p => !selected.find((select) => select.id === p.id)))
+    setCarts(
+      carts.filter((p) => !selected.find((select) => select.id === p.id))
+    );
     setSelected([]);
+  };
+
+  const getVoucher = (e) => {
+    setCodeVoucher(e.target.value);
+
+    if (e.target.value === "") {
+      setInterst(0);
+    }
+    vouchers.forEach((v) => {
+      if (v.code === e.target.value) {
+        setInterst(v.interst);
+        setCheckVoucher("getVoucher");
+      } else {
+        setInterst(0);
+        setCheckVoucher("empty");
+        F;
+      }
+    });
   };
 
   return (
@@ -215,11 +247,26 @@ const Cart = () => {
             </div>
             <p className={styles["delete-title"]}>Delete</p>
           </div>
-          <div className={styles.vouchers}>
+          <div
+            style={
+              checkVoucher === "empty"
+                ? {
+                    borderColor: "red",
+                  }
+                : {
+                    borderColor: "var(--white)",
+                  }
+            }
+            className={styles.vouchers}
+          >
             <div className={styles["voucher-icon"]}>
               <TagIcon />
             </div>
-            <input className={styles["voucher-title"]}></input>
+            <input
+              value={codeVoucher}
+              onChange={(e) => getVoucher(e)}
+              className={styles["voucher-title"]}
+            ></input>
           </div>
           <div
             onClick={() => {
@@ -241,7 +288,8 @@ const Cart = () => {
             <p className={styles["sumPrice-title"]}>
               {selected
                 .reduce((acc, curr) => acc + curr.priceNew * curr.amount, 0)
-                .toFixed(2)}
+                .toFixed(2) *
+                (1 - interst)}
               $
             </p>
           </div>
