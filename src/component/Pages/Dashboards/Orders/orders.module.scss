@@ -1,0 +1,166 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  height: 120%;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+
+  .Orders {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+
+    .container-order {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.5s;
+
+      &:hover{
+        box-shadow: none;
+      }
+
+      .container-product {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        gap: 5px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+          rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        padding: 10px;
+        
+        position: relative;
+        transition: 0.5s;
+        border-radius: 15px;
+
+        .img-product {
+          width: 120px;
+          height: 200px;
+          border-radius: 15px;
+          
+        }
+
+        .info-product {
+          flex: 1;
+        }
+
+        .title {
+          font-size: 20px;
+          font-family: var(--font-brand-heading);
+        }
+
+        .amount {
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+        }
+
+        .prices {
+          display: flex;
+          gap: 5px;
+          position: absolute;
+          bottom: 5px;
+
+          .priceOld {
+            text-decoration: line-through;
+          }
+        }
+      }
+
+      .info-ship{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .total-amount{
+          display: flex;
+          justify-content: space-between;
+
+          .total-amount-value{
+            margin-right: 4px;
+          }
+        }
+
+        .total-cost{
+          display: flex;
+          justify-content: space-between;
+
+          .total-cost-value{
+            margin-right: 4px;
+          }
+        }
+
+        .ship-status{
+          display: flex;
+          justify-content: space-between;
+
+          .ship-status-value{
+            margin-right: 4px;
+            font-weight: bold;
+          }
+        }
+
+        .ship-actions{
+          display: flex;
+          justify-content: space-between;
+
+          button{
+            width: 100px;
+            padding: 5px;
+            font-size: 15px;
+            font-weight: bold;
+          }
+
+          .ship-actions-cancle{
+            border: 1px solid var(--black);
+            box-sizing: border-box;
+            transition: 0.5s;
+
+            &:hover{
+              background-color: black;
+              color:var(--white);
+            }
+          }
+
+          .ship-actions-contact{
+            border: 1px solid var(--blue);
+            box-sizing: border-box;
+            transition: 0.5s;
+
+            &:hover{
+              background-color: var(--blue);
+              color:var(--white);
+            }
+          }
+
+          .ship-actions-rate{
+            color: var(--white);
+            background-color: var(--yellow);
+          }
+
+        }
+      }
+    }
+  }
+}

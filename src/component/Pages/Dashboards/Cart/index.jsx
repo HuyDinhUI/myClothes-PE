@@ -174,7 +174,6 @@ const Cart = () => {
       } else {
         setInterst(0);
         setCheckVoucher("empty");
-        F;
       }
     });
   };
@@ -207,7 +206,7 @@ const Cart = () => {
                           priceOld: pr.priceOld,
                           priceNew: pr.priceNew,
                           amount: pr.amount,
-                          size: pr.size,
+                          size: pr.size
                         },
                       ]);
                   }}
@@ -215,7 +214,7 @@ const Cart = () => {
                     selected.find((select) => select.id === pr.id)
                       ? {
                           color: "white",
-                          backgroundColor: "var(--begie)",
+                          backgroundColor: "var(--black)",
                         }
                       : {}
                   }

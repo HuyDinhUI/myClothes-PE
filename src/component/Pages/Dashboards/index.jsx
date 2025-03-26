@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./dashboards.module.scss";
 import Info from "../Dashboards/Info";
 import Cart from "../Dashboards/Cart";
+import Orders from "./Orders";
 import { ContentContext } from "../../../utils/ContentContext";
 import { useNavigate } from "react-router-dom";
 
@@ -40,6 +41,7 @@ const Dashboards = () => {
         <div className={styles.content}>
           {Content === "Info" && <Info />}
           {Content === "Cart" && <Cart />}
+          {Content === "Orders" && <Orders/>}
         </div>
       </div>
     </div>

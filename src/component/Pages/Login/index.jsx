@@ -30,12 +30,12 @@ const Login = () => {
       const userInfo = {
         id: res.data.id,
         username: res.data.username,
-        email:res.data.email
+        email: res.data.email,
       };
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
       localStorage.setItem("accessToken", res.data.accessToken);
       localStorage.setItem("refreshToken", res.data.refreshToken);
-      navigate('/dashboards')
+      navigate("/dashboards");
     } catch (error) {}
   };
 
@@ -55,6 +55,7 @@ const Login = () => {
               <div className={styles["form-group"]}>
                 <span className={styles["title-form"]}>username</span>
                 <input
+                  required
                   type="text"
                   {...register("username", {
                     required: "Email cannot be blank",
@@ -62,11 +63,11 @@ const Login = () => {
                   className={styles["input-form"]}
                   placeholder="huydinh123"
                 ></input>
-                
               </div>
               <div className={styles["form-group"]}>
                 <span className={styles["title-form"]}>email</span>
                 <input
+                  required
                   type="email"
                   {...register("email", { required: "Email cannot be blank" })}
                   className={styles["input-form"]}
@@ -76,6 +77,7 @@ const Login = () => {
               <div className={styles["form-group"]}>
                 <span className={styles["title-form"]}>password</span>
                 <input
+                  required
                   type="password"
                   {...register("password", {
                     required: "Password cannot be blank",

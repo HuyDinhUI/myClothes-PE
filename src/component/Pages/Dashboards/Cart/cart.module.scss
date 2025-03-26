@@ -30,23 +30,6 @@
     gap: 10px;
     transition: 0.5s;
     
-    @keyframes zoomIn {
-      from{
-        transform: scale(0);
-      }
-      to{
-        transform: scale(1);
-      }
-    }
-
-    @keyframes faded {
-      from{
-        opacity: 0;
-      }
-      to{
-        opacity: 100%;
-      }
-    }
 
     .container-product {
       width: 100%;
@@ -63,7 +46,8 @@
       
 
       &:hover {
-        background-color: var(--antiquewhite);
+        background-color: var(--black);
+        color: var(--white);
       }
 
       .img-product {
