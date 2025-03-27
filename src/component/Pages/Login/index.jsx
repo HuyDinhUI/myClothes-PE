@@ -43,12 +43,6 @@ const Login = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.banner}>
-            <img
-              className={styles["img-banner"]}
-              src="https://i.pinimg.com/736x/e8/3a/9e/e83a9e285f9e086b3cddfe3ddba17eb8.jpg"
-            ></img>
-          </div>
           <div className={styles["form-login"]}>
             <h1 className={styles.heading}>Log in</h1>
             <form onSubmit={handleSubmit(submitLogin)} className={styles.form}>
@@ -61,7 +55,7 @@ const Login = () => {
                     required: "Email cannot be blank",
                   })}
                   className={styles["input-form"]}
-                  placeholder="huydinh123"
+                  
                 ></input>
               </div>
               <div className={styles["form-group"]}>
@@ -71,7 +65,7 @@ const Login = () => {
                   type="email"
                   {...register("email", { required: "Email cannot be blank" })}
                   className={styles["input-form"]}
-                  placeholder="huydinh@gmail.com"
+                  
                 ></input>
               </div>
               <div className={styles["form-group"]}>
@@ -83,7 +77,7 @@ const Login = () => {
                     required: "Password cannot be blank",
                   })}
                   className={styles["input-form"]}
-                  placeholder="password have must least 8 characters"
+                  
                 ></input>
               </div>
               <button className={styles["submit-btn"]} type="submit">

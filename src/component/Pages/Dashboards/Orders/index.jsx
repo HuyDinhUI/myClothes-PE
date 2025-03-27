@@ -115,12 +115,9 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-
-
 const Orders = () => {
+  const [idOrder, setIdOrder] = useState([]);
 
-  const [idOrder,setIdOrder] = useState(null)
-  
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -137,7 +134,11 @@ const Orders = () => {
                   key={index}
                   className={styles["container-order"]}
                   variants={itemVariants}
-                  onClick={()=>idOrder===null ? setIdOrder(or.id):setIdOrder(null)}
+                  onClick={() =>
+                    !idOrder.find((i)=> i === or.id)
+                      ? setIdOrder([...idOrder, or.id])
+                      : setIdOrder(idOrder.filter((i) => i !== or.id))
+                  }
                 >
                   <div className={styles["container-product"]}>
                     <img
@@ -222,7 +223,7 @@ const Orders = () => {
                       </button>
                     </div>
                   </div>
-                  {or.id === idOrder ? <OrderDetail Order={or}/>:""}
+                  {idOrder.find((i)=>i === or.id) ? <OrderDetail Order={or} /> : ""}
                 </motion.div>
               );
             })}
