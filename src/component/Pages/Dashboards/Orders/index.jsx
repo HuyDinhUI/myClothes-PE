@@ -1,5 +1,7 @@
 import styles from "./orders.module.scss";
 import { motion } from "framer-motion";
+import OrderDetail from "./OrderDetail";
+import { useState } from "react";
 
 const orders = [
   {
@@ -113,7 +115,12 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+
+
 const Orders = () => {
+
+  const [idOrder,setIdOrder] = useState(null)
+  
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -130,6 +137,7 @@ const Orders = () => {
                   key={index}
                   className={styles["container-order"]}
                   variants={itemVariants}
+                  onClick={()=>idOrder===null ? setIdOrder(or.id):setIdOrder(null)}
                 >
                   <div className={styles["container-product"]}>
                     <img
@@ -214,6 +222,7 @@ const Orders = () => {
                       </button>
                     </div>
                   </div>
+                  {or.id === idOrder ? <OrderDetail Order={or}/>:""}
                 </motion.div>
               );
             })}
