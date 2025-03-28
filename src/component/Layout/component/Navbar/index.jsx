@@ -1,9 +1,9 @@
 import styles from './navbar.module.scss'
 
 
-const Navbar = ({children}) =>{
+const Navbar = ({children, classname}) =>{
     return (
-        <div className={styles.wrapper}>
+        <div className={styles[classname]}>
             <div className={styles.container}>
                 <div className={styles.content}>
                     {children}

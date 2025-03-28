@@ -29,10 +29,6 @@ const itemVariants = {
 
 const Item = [
   {
-    title: "Home",
-    icon: <HomeIcon />,
-  },
-  {
     title: "Info",
     icon: <ContactsIcon />,
   },

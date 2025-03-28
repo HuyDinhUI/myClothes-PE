@@ -8,7 +8,7 @@ const ShopLayout = ({ children }) => {
     <div className={styles.wrapper}>
       <Header />
       <div className={styles.container}>
-        <Navbar />
+        <Navbar classname={"navbarShop"} />
         <div className={styles.content}>{children}</div>
       </div>
       <Footer />

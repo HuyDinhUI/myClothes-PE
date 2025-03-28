@@ -1,0 +1,107 @@
+.wrapper {
+  width: 100%;
+  height: 150vh;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+
+  .navbar {
+    width: 100%;
+    height: 100px;
+  }
+
+  .products {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+
+    .container-product {
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-radius: 15px;
+      gap: 10px;
+      position: relative;
+      cursor: pointer;
+
+      .img-product {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      }
+
+      .info-product {
+        display: flex;
+        flex-direction: column;
+
+        .name {
+          font-family: var(--font-brand-heading);
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .des {
+          width: 100%;
+          display: -webkit-box;
+          -webkit-line-clamp: 7;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .more {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid black;
+          border-radius:5px;
+
+          .more-icon {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+      .actions {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--white);
+        padding: 5px;
+        background-color: black;
+        border-radius: 10px;
+        .action-like,
+        .action-addcart {
+          cursor: pointer;
+        }
+      }
+      .OnSale {
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        top: 80px;
+        left: 15px;
+        border-radius: 15px;
+        background-color: var(--yellow);
+      }
+    }
+  }
+}

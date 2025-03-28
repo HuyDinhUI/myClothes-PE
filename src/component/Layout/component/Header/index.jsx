@@ -20,7 +20,7 @@ const Header = () => {
         <div className={styles.navbar}>
           <div className={styles["navbar-container"]}>
             <Link to='/' className={styles["nav-link"]}>HOME</Link>
-            <Link className={styles["nav-link"]}>SHOP</Link>
+            <Link to='/shop' className={styles["nav-link"]}>SHOP</Link>
             <Link className={styles["nav-link"]}>ABOUT</Link>
             <Link className={styles["nav-link"]}>DISCOVER</Link>
             <Link className={styles["nav-link"]}>SOCIAL</Link>

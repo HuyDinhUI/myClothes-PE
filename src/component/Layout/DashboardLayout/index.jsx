@@ -11,7 +11,7 @@ const DashBoardLayout = ({ children }) => {
       <div className={styles.wrapper}>
         <Header />
         <div className={styles.container}>
-          <Navbar>
+          <Navbar classname={"navbarDashBoard"}>
             <ItemUser />
           </Navbar>
           <div className={styles.content}>{children}</div>
