@@ -2,7 +2,12 @@ import styles from "./shop.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { TagIcon, CaretDownIcon, CaretRightIcon } from "@bitcoin-design/bitcoin-icons-react/outline";
+import {
+  TagIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+} from "@bitcoin-design/bitcoin-icons-react/outline";
+import { motion } from "framer-motion";
 const products = [
   {
     id: "MH001",
@@ -114,22 +119,50 @@ const products = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, 
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0 },
+};
+
 const Shop = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.navbar}></div>
-          <div className={styles.products}>
+          <div className={styles.navbar}>
+            <h1 className={styles["slogan-title"]}>FOR ⟶ EVERYONE BUT NOTANYONE</h1>
+          </div>
+          <motion.div
+            className={styles.products}
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
             {products.map((pr, index) => {
               return (
-                <div key={index} className={styles["container-product"]}>
+                <motion.div 
+                key={index} 
+                className={styles["container-product"]}
+                variants={itemVariants}
+                >
                   <img className={styles["img-product"]} src={pr.img}></img>
                   <div className={styles["info-product"]}>
                     <h3 className={styles.name}>{pr.name}</h3>
                     <p className={styles.des}>{pr.des}</p>
                     <div className={styles.more}>
-                        <div className={styles["more-icon"]}><CaretDownIcon/></div>
+                      <div className={styles["more-icon"]}>
+                        <CaretDownIcon />
+                      </div>
                     </div>
                   </div>
                   <div className={styles.actions}>
@@ -141,12 +174,12 @@ const Shop = () => {
                     </div>
                   </div>
                   <div className={styles.OnSale}>
-                    <TagIcon/>
+                    <TagIcon />
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
