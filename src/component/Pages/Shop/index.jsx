@@ -139,7 +139,7 @@ const Shop = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.navbar}>
+          <div className={styles.slogan}>
             <h1 className={styles["slogan-title"]}>FOR ⟶ EVERYONE BUT NOTANYONE</h1>
           </div>
           <motion.div
@@ -180,6 +180,7 @@ const Shop = () => {
               );
             })}
           </motion.div>
+          <div className={styles.more}></div>
         </div>
       </div>
     </div>

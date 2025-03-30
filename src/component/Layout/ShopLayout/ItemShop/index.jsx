@@ -1,14 +1,62 @@
+import { useState } from "react";
 import styles from "./ItemShop.module.scss";
-import { SearchIcon } from "@bitcoin-design/bitcoin-icons-react/outline";
+import {
+  SearchIcon,
+  TransactionsIcon,
+} from "@bitcoin-design/bitcoin-icons-react/outline";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPalette, faList} from '@fortawesome/free-solid-svg-icons'
+
+const category = [
+  {
+    title: "T-Shirt",
+    value: "tshirt",
+  },
+  {
+    title: "Pants",
+    value: "pants",
+  },
+  {
+    title: "Shoes",
+    value: "shoes",
+  },
+  {
+    title: "Spares",
+    value: "spares",
+  },
+];
+
+const color = [
+  {
+    title:'White',
+    value:'white',
+    codeColor:'--white'
+  },
+  {
+    title:'Black',
+    value:'black',
+    codeColor:'--black'
+  },
+  {
+    title:'Dark Blue',
+    value:'blue',
+    codeColor:'--dark-blue'
+  },
+  {
+    title:'Begie',
+    value:'begie',
+    codeColor:'--begie'
+  },
+]
 
 const ItemShop = () => {
+  const [checked, setChecked] = useState([]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.search}>
-          <div className={styles["search-icon"]}>
-            <SearchIcon />
-          </div>
+          
           <input
             className={styles["search-input"]}
             placeholder="Search"
@@ -16,25 +64,82 @@ const ItemShop = () => {
         </div>
         <div className={styles.content}>
           <div className={styles.filter}>
-            <div className={styles.type}>
-              <h3>Type</h3>
+            <div className={styles.category}>
+              <div className={styles.title}>
+                <div className={styles.icon}>
+                  <FontAwesomeIcon icon={faList} />
+                </div>
+                <h3>Category</h3>
+              </div>
               <div className={styles["type-group"]}>
-                  <label className={styles["input-group"]}>
-                    <input type="checkbox" value={"tshirt"}></input>
-                    <span>T-Shirt</span>
-                  </label>
-                  <label className={styles["input-group"]}>
-                    <input type="checkbox" value={"pants"}></input>
-                    <span>Pants</span>
-                  </label>
-                  <label className={styles["input-group"]}>
-                    <input type="checkbox" value={"shose"}></input>
-                    <span>Shose</span>
-                  </label>
-                  <label className={styles["input-group"]}>
-                    <input type="checkbox" value={"spares"}></input>
-                    <span>Spares</span>
-                  </label>
+                {category.map((cate, index) => {
+                  return (
+                    <label
+                      style={
+                        checked.find((ch) => ch === cate.value)
+                          ? {
+                              backgroundColor: "var(--begie)",
+                              color: "var(--white)",
+                            }
+                          : {}
+                      }
+                      className={styles["input-group"]}
+                    >
+                      <input
+                        style={{accentColor:'var(--white)'}}
+                        type="checkbox"
+                        value={cate.value}
+                        onChange={(e) =>
+                          setChecked(
+                            e.target.checked
+                              ? [...checked, cate.value]
+                              : checked.filter((ch) => ch != cate.value)
+                          )
+                        }
+                      ></input>
+                      <span>{cate.title}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+            <div className={styles.color}>
+              <div className={styles.title}>
+                <div className={styles.icon}>
+                  <FontAwesomeIcon icon={faPalette}/>
+                </div>
+                <h3>Color</h3>
+              </div>
+              <div className={styles["type-group"]}>
+                {color.map((cate, index) => {
+                  return (
+                    <label
+                      style={
+                        checked.find((ch) => ch === cate.value)
+                          ? {
+                              backgroundColor: `var(${cate.codeColor})`,
+                              color: `var(${cate.title === 'White' ? '--black':'--white'})`,
+                            }
+                          : {}
+                      }
+                      className={styles["input-group"]}
+                    >
+                      <input
+                        style={{accentColor:'var(--white)'}}
+                        type="checkbox"
+                        value={cate.value}
+                        onChange={(e) =>
+                          setChecked(
+                            e.target.checked
+                              ? [...checked, cate.value]
+                              : checked.filter((ch) => ch != cate.value)
+                          )
+                        }
+                      ></input>
+                      <span>{cate.title}</span>
+                    </label>
+                  );
+                })}
               </div>
             </div>
           </div>
