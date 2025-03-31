@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./ItemShop.module.scss";
 import {
   SearchIcon,
   TransactionsIcon,
 } from "@bitcoin-design/bitcoin-icons-react/outline";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faPalette, faList} from '@fortawesome/free-solid-svg-icons'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPalette, faList } from "@fortawesome/free-solid-svg-icons";
+import { SearchContext } from "../../../../utils/SearchContext";
 const category = [
   {
     title: "T-Shirt",
@@ -28,38 +28,39 @@ const category = [
 
 const color = [
   {
-    title:'White',
-    value:'white',
-    codeColor:'--white'
+    title: "White",
+    value: "white",
+    codeColor: "--white",
   },
   {
-    title:'Black',
-    value:'black',
-    codeColor:'--black'
+    title: "Black",
+    value: "black",
+    codeColor: "--black",
   },
   {
-    title:'Dark Blue',
-    value:'blue',
-    codeColor:'--dark-blue'
+    title: "Dark Blue",
+    value: "blue",
+    codeColor: "--dark-blue",
   },
   {
-    title:'Begie',
-    value:'begie',
-    codeColor:'--begie'
+    title: "Begie",
+    value: "begie",
+    codeColor: "--begie",
   },
-]
+];
 
 const ItemShop = () => {
   const [checked, setChecked] = useState([]);
-
+  const { Content, setContent } = useContext(SearchContext);
+  console.log(Content)
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.search}>
-          
           <input
             className={styles["search-input"]}
             placeholder="Search"
+            onChange={(e) => setContent(e.target.value)}
           ></input>
         </div>
         <div className={styles.content}>
@@ -86,7 +87,7 @@ const ItemShop = () => {
                       className={styles["input-group"]}
                     >
                       <input
-                        style={{accentColor:'var(--white)'}}
+                        style={{ accentColor: "var(--white)" }}
                         type="checkbox"
                         value={cate.value}
                         onChange={(e) =>
@@ -106,7 +107,7 @@ const ItemShop = () => {
             <div className={styles.color}>
               <div className={styles.title}>
                 <div className={styles.icon}>
-                  <FontAwesomeIcon icon={faPalette}/>
+                  <FontAwesomeIcon icon={faPalette} />
                 </div>
                 <h3>Color</h3>
               </div>
@@ -118,14 +119,16 @@ const ItemShop = () => {
                         checked.find((ch) => ch === cate.value)
                           ? {
                               backgroundColor: `var(${cate.codeColor})`,
-                              color: `var(${cate.title === 'White' ? '--black':'--white'})`,
+                              color: `var(${
+                                cate.title === "White" ? "--black" : "--white"
+                              })`,
                             }
                           : {}
                       }
                       className={styles["input-group"]}
                     >
                       <input
-                        style={{accentColor:'var(--white)'}}
+                        style={{ accentColor: "var(--white)" }}
                         type="checkbox"
                         value={cate.value}
                         onChange={(e) =>

@@ -6,8 +6,11 @@ import {
   TagIcon,
   CaretDownIcon,
   CaretRightIcon,
+  CaretLeftIcon,
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { motion } from "framer-motion";
+import { useContext, useEffect, useState } from "react";
+import { SearchContext } from "../../../utils/SearchContext";
 const products = [
   {
     id: "MH001",
@@ -117,6 +120,24 @@ const products = [
     sizes: ["S", "M", "X", "XL"],
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
+  {
+    id: "MH013",
+    name: "T-Shirt White Color",
+    img: "https://i.imgur.com/sv6NPpI.jpg",
+    priceOld: 9.0,
+    priceNew: 8.9,
+    sizes: ["S", "M", "X", "XL"],
+    des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
+  },
+  {
+    id: "MH014",
+    name: "T-Shirt White Color ",
+    img: "https://i.imgur.com/lT0mttW.jpg",
+    priceOld: 9.0,
+    priceNew: 8.9,
+    sizes: ["S", "M", "X", "XL"],
+    des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
+  },
 ];
 
 const containerVariants = {
@@ -124,23 +145,49 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, 
+      staggerChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 },
 };
 
 const Shop = () => {
+  const [indexcurrent, setIndexCurrent] = useState(12);
+  const [Products, setProducts] = useState(products);
+  const { Content, setContent } = useContext(SearchContext);
+  var array = [];
+  const renderPage = () => {
+    for (let i = 1; i <= Math.ceil(Products.length / 12); i++) {
+      array.push(i);
+    }
+
+    return array.map((p) => (
+      <div onClick={() => setIndexCurrent(12 * p)}>{p}</div>
+    ));
+  };
+
+  useEffect(() => {
+    console.log(Content);
+    const pr = [...products];
+    
+      setProducts(() =>
+        pr.filter((pr) => pr.name.toLowerCase().includes(Content))
+      );
+    
+  }, [Content]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.slogan}>
-            <h1 className={styles["slogan-title"]}>FOR ⟶ EVERYONE BUT NOTANYONE</h1>
+            <h1 className={styles["slogan-title"]}>
+              FOR ⟶ EVERYONE BUT NOTANYONE
+            </h1>
           </div>
           <motion.div
             className={styles.products}
@@ -148,39 +195,63 @@ const Shop = () => {
             animate="visible"
             variants={containerVariants}
           >
-            {products.map((pr, index) => {
-              return (
-                <motion.div 
-                key={index} 
-                className={styles["container-product"]}
-                variants={itemVariants}
-                >
-                  <img className={styles["img-product"]} src={pr.img}></img>
-                  <div className={styles["info-product"]}>
-                    <h3 className={styles.name}>{pr.name}</h3>
-                    <p className={styles.des}>{pr.des}</p>
-                    <div className={styles.more}>
-                      <div className={styles["more-icon"]}>
-                        <CaretDownIcon />
+            {Products.map(
+              (pr, index) =>
+                index >= indexcurrent - 12 &&
+                index < indexcurrent && (
+                  <motion.div
+                    key={index}
+                    className={styles["container-product"]}
+                    variants={itemVariants}
+                  >
+                    <img className={styles["img-product"]} src={pr.img}></img>
+                    <div className={styles["info-product"]}>
+                      <h3 className={styles.name}>{pr.name}</h3>
+                      <p className={styles.des}>{pr.des}</p>
+                      <div className={styles.more}>
+                        <div className={styles["more-icon"]}>
+                          <CaretDownIcon />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className={styles.actions}>
-                    <div className={styles["action-like"]}>
-                      <FontAwesomeIcon icon={faHeart} />
+                    <div className={styles.actions}>
+                      <div className={styles["action-like"]}>
+                        <FontAwesomeIcon icon={faHeart} />
+                      </div>
+                      <div className={styles["action-addcart"]}>
+                        <FontAwesomeIcon icon={faPlus} />
+                      </div>
                     </div>
-                    <div className={styles["action-addcart"]}>
-                      <FontAwesomeIcon icon={faPlus} />
+                    <div className={styles.OnSale}>
+                      <TagIcon />
                     </div>
-                  </div>
-                  <div className={styles.OnSale}>
-                    <TagIcon />
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                )
+            )}
+            {Products.length===0 && <div className={styles["no_product"]}>
+              There are no matching results</div>}
           </motion.div>
-          <div className={styles.more}></div>
+          <div className={styles.PageProduct}>
+            <button
+              disabled={indexcurrent == 12}
+              onClick={() => {
+                setIndexCurrent(indexcurrent - 12);
+              }}
+              className={styles.prev}
+            >
+              <CaretLeftIcon />
+            </button>
+            <div className={styles.page}>{renderPage()}</div>
+            <button
+              disabled={indexcurrent >= Products.length}
+              onClick={() => {
+                setIndexCurrent(indexcurrent + 12);
+              }}
+              className={styles.prev}
+            >
+              <CaretRightIcon />
+            </button>
+          </div>
         </div>
       </div>
     </div>

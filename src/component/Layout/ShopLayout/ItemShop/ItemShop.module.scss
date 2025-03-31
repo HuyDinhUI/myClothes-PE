@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--sand-light);
+    border: 3px solid var(--sand-light);
     border-radius: 15px;
 
     .search-icon {
