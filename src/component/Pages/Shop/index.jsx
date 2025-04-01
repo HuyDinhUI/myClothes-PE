@@ -10,7 +10,7 @@ import {
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
-import { SearchContext } from "../../../utils/SearchContext";
+import { FilterContext } from "../../../utils/FilterContext";
 const products = [
   {
     id: "MH001",
@@ -19,6 +19,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'T-Shirt',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -28,6 +29,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'T-Shirt',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -37,6 +39,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'T-Shirt',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -46,6 +49,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Pants',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -55,6 +59,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Pants',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -64,6 +69,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Pants',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -73,6 +79,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Pants',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -82,6 +89,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Pants',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -91,6 +99,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Shoes',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -100,6 +109,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Shoes',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -109,6 +119,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Shoes',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -118,6 +129,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Shoes',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -127,6 +139,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Shoes',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
   {
@@ -136,6 +149,7 @@ const products = [
     priceOld: 9.0,
     priceNew: 8.9,
     sizes: ["S", "M", "X", "XL"],
+    category:'Shoes',
     des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
   },
 ];
@@ -158,7 +172,9 @@ const itemVariants = {
 const Shop = () => {
   const [indexcurrent, setIndexCurrent] = useState(12);
   const [Products, setProducts] = useState(products);
-  const { Content, setContent } = useContext(SearchContext);
+  const { Content, setContent } = useContext(FilterContext);
+  const {Cate, setCate} = useContext(FilterContext)
+
   var array = [];
   const renderPage = () => {
     for (let i = 1; i <= Math.ceil(Products.length / 12); i++) {
@@ -173,12 +189,20 @@ const Shop = () => {
   useEffect(() => {
     console.log(Content);
     const pr = [...products];
-    
-      setProducts(() =>
-        pr.filter((pr) => pr.name.toLowerCase().includes(Content))
-      );
-    
+
+    setProducts(() =>
+      pr.filter((pr) => pr.name.toLowerCase().includes(Content))
+    );
   }, [Content]);
+
+  useEffect(() => {
+    console.log(Cate);
+    const pr = [...products];
+
+    setProducts(() => 
+      Cate.length ? pr.filter((pr) => Cate.includes(pr.category)):products
+    );
+  }, [Cate]);
 
   return (
     <div className={styles.wrapper}>
@@ -228,8 +252,11 @@ const Shop = () => {
                   </motion.div>
                 )
             )}
-            {Products.length===0 && <div className={styles["no_product"]}>
-              There are no matching results</div>}
+            {Products.length === 0 && (
+              <div className={styles["no_product"]}>
+                There are no matching results
+              </div>
+            )}
           </motion.div>
           <div className={styles.PageProduct}>
             <button

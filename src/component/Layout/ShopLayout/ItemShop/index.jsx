@@ -6,7 +6,7 @@ import {
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPalette, faList } from "@fortawesome/free-solid-svg-icons";
-import { SearchContext } from "../../../../utils/SearchContext";
+import { FilterContext } from "../../../../utils/FilterContext";
 const category = [
   {
     title: "T-Shirt",
@@ -51,8 +51,18 @@ const color = [
 
 const ItemShop = () => {
   const [checked, setChecked] = useState([]);
-  const { Content, setContent } = useContext(SearchContext);
-  console.log(Content)
+  const { Content, setContent } = useContext(FilterContext);
+  const { Cate, setCate } = useContext(FilterContext);
+
+  const handleCategoryChange = (category) => {
+    setCate((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
+  };
+
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -90,13 +100,15 @@ const ItemShop = () => {
                         style={{ accentColor: "var(--white)" }}
                         type="checkbox"
                         value={cate.value}
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setChecked(
                             e.target.checked
                               ? [...checked, cate.value]
                               : checked.filter((ch) => ch != cate.value)
-                          )
-                        }
+                          );
+                          handleCategoryChange(cate.title)
+
+                        }}
                       ></input>
                       <span>{cate.title}</span>
                     </label>

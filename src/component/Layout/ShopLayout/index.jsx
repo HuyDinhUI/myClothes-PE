@@ -3,11 +3,11 @@ import Navbar from "../component/Navbar/index";
 import Footer from "../component/Footer";
 import Header from "../component/Header/index";
 import ItemShop from "./ItemShop";
-import { SearchProvider } from "../../../utils/SearchContext";
+import { FilterProvider } from "../../../utils/FilterContext";
 
 const ShopLayout = ({ children }) => {
   return (
-    <SearchProvider>
+    <FilterProvider>
       <div className={styles.wrapper}>
         <Header />
         <div className={styles.container}>
@@ -18,7 +18,7 @@ const ShopLayout = ({ children }) => {
         </div>
         <Footer />
       </div>
-    </SearchProvider>
+    </FilterProvider>
   );
 };
 
