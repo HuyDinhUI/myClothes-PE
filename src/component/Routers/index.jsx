@@ -18,7 +18,7 @@ const publicRoutes = [
       layout:ShopLayout
     },
     {
-      path:"/product",
+      path:"/product/:id",
       component:Product,
     },
     {

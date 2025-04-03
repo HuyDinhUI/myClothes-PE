@@ -82,7 +82,7 @@ const ItemShop = () => {
                 </div>
                 <h3>Category</h3>
               </div>
-              <div className={styles["type-group"]}>
+              <div className={styles["category-group"]}>
                 {category.map((cate, index) => {
                   return (
                     <label
@@ -111,6 +111,7 @@ const ItemShop = () => {
                         }}
                       ></input>
                       <span>{cate.title}</span>
+                      
                     </label>
                   );
                 })}
@@ -123,7 +124,7 @@ const ItemShop = () => {
                 </div>
                 <h3>Color</h3>
               </div>
-              <div className={styles["type-group"]}>
+              <div className={styles["color-group"]}>
                 {color.map((cate, index) => {
                   return (
                     <label
