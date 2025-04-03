@@ -1,8 +1,11 @@
 import { useState } from "react";
 import styles from "./product.module.scss";
-import { CartIcon,StarIcon } from "@bitcoin-design/bitcoin-icons-react/outline";
+import {
+  CartIcon,
+  StarIcon,
+} from "@bitcoin-design/bitcoin-icons-react/outline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons"
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
 const product = {
   id: "MH001",
@@ -17,7 +20,7 @@ const product = {
   ],
   priceOld: 9.0,
   priceNew: 8.9,
-  sizes: ["S", "M", "X", "XL"],
+  sizes: ["S", "M", "L", "XL"],
   colors: [
     {
       title: "White",
@@ -36,13 +39,13 @@ const Product = () => {
   const [imgCenter, setImgCenter] = useState(product.listImg[0]);
   const [amountProduct, setAmountProduct] = useState(0);
   const [defaultDes, setDefaultDdes] = useState(true);
+  const [size, setSize] = useState();
+  const [color, setColor] = useState();
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.router}>
-            
-          </div>
+          <div className={styles.router}></div>
           <div className={styles["info"]}>
             <div className={styles["info-main"]}>
               <div className={styles["info-main--img"]}>
@@ -70,11 +73,21 @@ const Product = () => {
                   <FontAwesomeIcon icon={faHeart}/>
                 </div> */}
                 <div className={styles["rank"]}>
-                  <div className={styles.star}><StarIcon/></div>
-                  <div className={styles.star}><StarIcon/></div>
-                  <div className={styles.star}><StarIcon/></div>
-                  <div className={styles.star}><StarIcon/></div>
-                  <div className={styles.star}><StarIcon/></div>
+                  <div className={styles.star}>
+                    <StarIcon />
+                  </div>
+                  <div className={styles.star}>
+                    <StarIcon />
+                  </div>
+                  <div className={styles.star}>
+                    <StarIcon />
+                  </div>
+                  <div className={styles.star}>
+                    <StarIcon />
+                  </div>
+                  <div className={styles.star}>
+                    <StarIcon />
+                  </div>
                 </div>
                 <div className={styles.prices}>
                   <p className={styles.priceOld}>
@@ -89,7 +102,7 @@ const Product = () => {
                   style={
                     defaultDes
                       ? {
-                          height: "100px",
+                          height: "90px",
                           textAlign: "justify",
                           display: "-webkit-box",
                           WebkitLineClamp: "4",
@@ -102,47 +115,115 @@ const Product = () => {
                 >
                   <p>{product.des}</p>
                 </div>
-                <div className={styles["options-size"]}>
-                  {product.sizes.map((s, i) => {
-                    return (
-                      <div className={styles["size-btn"]}>
-                        <p>{s}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className={styles["options-color"]}>
-                  {product.colors.map((c, i) => {
-                    return (
-                      <div
-                        style={{ backgroundColor: `var(${c.codeColor})` }}
-                        className={styles["color-btn"]}
-                      ></div>
-                    );
-                  })}
-                </div>
-                <div className={styles["amount-product"]}>
-                  <button
-                    disabled={amountProduct < 1}
-                    onClick={() => setAmountProduct(amountProduct - 1)}
-                  >
-                    -
-                  </button>
-                  <p>{amountProduct}</p>
-                  <button
-                    disabled={amountProduct > 99}
-                    onClick={() => setAmountProduct(amountProduct + 1)}
-                  >
-                    +
-                  </button>
-                </div>
-                <div className={styles["add-to-cart"]}>
-                  <div className={styles["icon-cart"]}>
-                    <CartIcon />
+                <div className={styles["options-type"]}>
+                  <div className={styles["options-size"]}>
+                    {product.sizes.map((s, i) => {
+                      return (
+                        <div
+                          style={size === s ? { transform: "scale(0.7)" } : {}}
+                          onClick={() => setSize(s)}
+                          className={styles["size-btn"]}
+                        >
+                          <p>{s}</p>
+                        </div>
+                      );
+                    })}
                   </div>
-                  <p>Add to cart</p>
+                  <div className={styles["options-color"]}>
+                    {product.colors.map((c, i) => {
+                      return (
+                        <div
+                          onClick={() => setColor(c)}
+                          style={
+                            color === c
+                              ? {
+                                  transform: "scale(0.7)",
+                                  backgroundColor: `var(${c.codeColor})`,
+                                }
+                              : { backgroundColor: `var(${c.codeColor})` }
+                          }
+                          className={styles["color-btn"]}
+                        ></div>
+                      );
+                    })}
+                  </div>
                 </div>
-                
+
+                <div className={styles["quantity-product"]}>
+                  <div className={styles["amount-product"]}>
+                    <button
+                      disabled={amountProduct < 1}
+                      onClick={() => setAmountProduct(amountProduct - 1)}
+                    >
+                      -
+                    </button>
+                    <div>
+                      <p>{amountProduct}</p>
+                    </div>
+                    <button
+                      disabled={amountProduct > 99}
+                      onClick={() => setAmountProduct(amountProduct + 1)}
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div className={styles["add-to-cart"]}>
+                    <div className={styles["icon-cart"]}>
+                      <CartIcon />
+                    </div>
+                    <p>Add to cart</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={styles["info-more"]}>
+              <div className={styles["info-more--detail"]}>
+                <table className={styles["table-info-detail"]}>
+                  <tr>
+                    <th>style</th>
+                    <th>season</th>
+                    <th>style-sleeve</th>
+                    <th>material</th>
+                  </tr>
+                  <tr>
+                    <td>Asian, Minalist, Stylish</td>
+                    <td>Summer</td>
+                    <td>Short</td>
+                    <td>Cotton</td>
+                  </tr>
+                </table>
+              </div>
+              <div className={styles["info-more--size"]}>
+                <table className={styles["table-guide-size"]}>
+                  <tr>
+                    <th>size</th>
+                    <th>length</th>
+                    <th>waist</th>
+                    <th>height</th>
+                    <th>weight</th>
+                  </tr>
+                  <tr>
+                    <td>M</td>
+                    <td>69cm</td>
+                    <td>106cm</td>
+                    <td>1m58-1m64</td>
+                    <td>48-55kg</td>
+                  </tr>
+                  <tr>
+                    <td>L</td>
+                    <td>71cm</td>
+                    <td>110cm</td>
+                    <td>1m64-1m70</td>
+                    <td>55-65kg</td>
+                  </tr>
+                  <tr>
+                    <td>XL</td>
+                    <td>73cm</td>
+                    <td>114cm</td>
+                    <td> {`<`}1m75</td>
+                    <td>65-73kg</td>
+                  </tr>
+                </table>
               </div>
             </div>
           </div>
