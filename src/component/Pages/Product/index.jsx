@@ -32,7 +32,11 @@ const product = {
     },
   ],
   category: "T-Shirt",
-  des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
+  detail: {
+    des: "Achieve the perfect blend of casual and stylish with this trendy streetwear outfit. Featuring a classic blue denim jacket layered over a simple white tee, this look is effortlessly cool. The oversized white wide-leg pants offer both comfort and a modern edge, while the black and white sneakers complete the ensemble with a touch of retro charm. A crossbody bag and a unique two-tone cap tucked into the pocket add functional yet fashionable details. Ideal for urban explorers who appreciate comfort and style in equal measure.",
+    detailProduct:
+      "This image showcases a stylish and trendy outfit featuring a mix of casual and streetwear elements. The ensemble consists of a blue denim jacket layered over a white t-shirt, paired with wide-leg white pants. The denim jacket, made from sturdy cotton fabric, gives off a classic and timeless vibe, while the oversized fit adds a modern touch.The white pants, likely crafted from denim or cotton blend, provide a clean and fresh contrast against the blue jacket. Their wide-leg cut enhances comfort and aligns with the relaxed, contemporary streetwear aesthetic.Completing the look, the individual is wearing black-and-white Converse sneakers, adding a retro and versatile element to the outfit. A navy blue cap with embroidered text is casually tucked into the pocket, reinforcing the laid-back, effortlessly cool style. The black crossbody bag, worn diagonally across the torso, adds a practical yet stylish accessory, perfect for an urban setting.Overall, this outfit embodies a casual, youthful, and fashion-forward streetwear style, blending vintage denim with modern oversized silhouettes. The neutral color palette of blue, white, and black ensures a balanced and timeless appearance.",
+  },
 };
 
 const Product = () => {
@@ -46,7 +50,12 @@ const Product = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.router}></div>
+          {/*================ INFO =================*/}
           <div className={styles["info"]}>
+            {/*================ INFO MAIN =================*/}
+            {/*================ INFO MAIN =================*/}
+            {/*================ INFO MAIN =================*/}
+            {/*================ INFO MAIN =================*/}
             <div className={styles["info-main"]}>
               <div className={styles["info-main--img"]}>
                 <div className={styles["img-slides"]}>
@@ -113,7 +122,7 @@ const Product = () => {
                   }
                   className={styles["info-des"]}
                 >
-                  <p>{product.des}</p>
+                  <p>{product.detail.des}</p>
                 </div>
                 <div className={styles["options-type"]}>
                   <div className={styles["options-size"]}>
@@ -176,54 +185,84 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className={styles["info-more"]}>
-              <div className={styles["info-more--detail"]}>
-                <table className={styles["table-info-detail"]}>
-                  <tr>
-                    <th>style</th>
-                    <th>season</th>
-                    <th>style-sleeve</th>
-                    <th>material</th>
-                  </tr>
-                  <tr>
-                    <td>Asian, Minalist, Stylish</td>
-                    <td>Summer</td>
-                    <td>Short</td>
-                    <td>Cotton</td>
-                  </tr>
-                </table>
+            {/*================ END INFO MAIN =================*/}
+            {/*================ END INFO MAIN =================*/}
+
+            {/*================ INFO OVERVIEW =================*/}
+            {/*================ INFO OVERVIEW =================*/}
+            {/*================ INFO OVERVIEW =================*/}
+            {/*================ INFO OVERVIEW =================*/}
+            <div className={styles["info-overview"]}>
+              <div className={styles["info-overview--title"]}>
+                <h2>Overview</h2>
               </div>
-              <div className={styles["info-more--size"]}>
-                <table className={styles["table-guide-size"]}>
-                  <tr>
-                    <th>size</th>
-                    <th>length</th>
-                    <th>waist</th>
-                    <th>height</th>
-                    <th>weight</th>
-                  </tr>
-                  <tr>
-                    <td>M</td>
-                    <td>69cm</td>
-                    <td>106cm</td>
-                    <td>1m58-1m64</td>
-                    <td>48-55kg</td>
-                  </tr>
-                  <tr>
-                    <td>L</td>
-                    <td>71cm</td>
-                    <td>110cm</td>
-                    <td>1m64-1m70</td>
-                    <td>55-65kg</td>
-                  </tr>
-                  <tr>
-                    <td>XL</td>
-                    <td>73cm</td>
-                    <td>114cm</td>
-                    <td> {`<`}1m75</td>
-                    <td>65-73kg</td>
-                  </tr>
-                </table>
+              <div className={styles["info-overview--detail"]}>
+                <h3>Product detail</h3>
+                <p>{product.detail.detailProduct}</p>
+              </div>
+              <div className={styles.highlights}>
+                <h3>Highlights</h3>
+                <div className={styles["info-more--detail"]}>
+                  <table className={styles["table-info-detail"]}>
+                    <tr>
+                      <th>style</th>
+                      <th>season</th>
+                      <th>style-sleeve</th>
+                      <th>material</th>
+                    </tr>
+                    <tr>
+                      <td>Asian, Minalist, Stylish</td>
+                      <td>Summer</td>
+                      <td>Short</td>
+                      <td>Cotton</td>
+                    </tr>
+                  </table>
+                </div>
+                <div className={styles["info-more--size"]}>
+                  <table className={styles["table-guide-size"]}>
+                    <tr>
+                      <th>size</th>
+                      <th>length</th>
+                      <th>waist</th>
+                      <th>height</th>
+                      <th>weight</th>
+                    </tr>
+                    <tr>
+                      <td>M</td>
+                      <td>69cm</td>
+                      <td>106cm</td>
+                      <td>1m58-1m64</td>
+                      <td>48-55kg</td>
+                    </tr>
+                    <tr>
+                      <td>L</td>
+                      <td>71cm</td>
+                      <td>110cm</td>
+                      <td>1m64-1m70</td>
+                      <td>55-65kg</td>
+                    </tr>
+                    <tr>
+                      <td>XL</td>
+                      <td>73cm</td>
+                      <td>114cm</td>
+                      <td> {`<`}1m75</td>
+                      <td>65-73kg</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            {/*================ END INFO OVERVIEW =================*/}
+            {/*================ END INFO OVERVIEW =================*/}
+
+            {/*================ OUTFIT GUIDE =================*/}
+            {/*================ OUTFIT GUIDE =================*/}
+            {/*================ OUTFIT GUIDE =================*/}
+            {/*================ OUTFIT GUIDE =================*/}
+
+            <div className={styles["product-guide"]}>
+              <div className={styles["product-guide--slides"]}>
+                
               </div>
             </div>
           </div>

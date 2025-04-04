@@ -18,13 +18,22 @@
     border-bottom: 1px solid var(--grey);
   }
 
+  /*================================= INFO ==================================*/
+
   .info {
     margin-top: 50px;
     padding: 0px 120px;
 
+    /*================================= INFO MAIN ==================================*/
+    /*================================= INFO MAIN ==================================*/
+    /*================================= INFO MAIN ==================================*/
+    /*================================= INFO MAIN ==================================*/
+
     .info-main {
       height: 700px;
       display: flex;
+
+      /*================================= IMAGE  ==================================*/
 
       .info-main--img {
         width: 800px;
@@ -39,16 +48,19 @@
           overflow-y: scroll;
           display: flex;
           flex-direction: column;
+          gap: 5px;
           scrollbar-width: none;
           padding-right: 10px;
-          border-right:1px solid var(--grey) ;
+          border-right: 1px solid var(--grey);
 
           .img-slides-item {
             width: 100%;
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
             img {
-              width: 100%;
-              height: 300px;
+              width: 90%;
+              height: 230px;
               border-radius: 10px;
             }
           }
@@ -57,11 +69,9 @@
         .img-center {
           flex: 1;
 
-
           .img-center--item {
             width: 90%;
             height: 100%;
-            
 
             img {
               width: 90%;
@@ -71,6 +81,8 @@
           }
         }
       }
+
+      /*================================= ACTIONS ==================================*/
 
       .info-main--actions {
         flex: 1;
@@ -90,7 +102,6 @@
 
           .size-btn,
           .color-btn {
-            
             padding: 10px;
             display: flex;
             justify-content: center;
@@ -102,12 +113,10 @@
             cursor: pointer;
             transition: 0.5s;
 
-            &:hover{
+            &:hover {
               transform: scale(0.7);
             }
           }
-
-         
         }
 
         .prices {
@@ -128,14 +137,14 @@
           font-size: 15px;
         }
 
-        .options-type{
+        .options-type {
           margin-top: 50px;
           border-top: 1px solid var(--grey);
           display: flex;
           gap: 10px;
         }
 
-        .quantity-product{
+        .quantity-product {
           display: flex;
           align-items: center;
           gap: 10px;
@@ -148,9 +157,8 @@
           display: flex;
           justify-content: space-around;
           gap: 5px;
-          border: 1px solid  rgb(206, 206, 206);
+          border: 1px solid rgb(206, 206, 206);
           padding: 10px;
-          
 
           button,
           div {
@@ -176,7 +184,7 @@
           transition: 0.5s;
           cursor: pointer;
 
-          &:hover{
+          &:hover {
             background-color: var(--black);
             color: var(--white);
           }
@@ -207,63 +215,113 @@
       }
     }
 
-    .info-more {
+    /*============================== OVERVIEW ==============================*/
+    /*============================== OVERVIEW ==============================*/
+    /*============================== OVERVIEW ==============================*/
+    /*============================== OVERVIEW ==============================*/
+
+    .info-overview {
       border-top: 1px solid var(--grey);
       margin-top: 20px;
       display: flex;
-      
+      gap: 20px;
 
-      .info-more--detail {
-        width: 400px;
+      .info-overview--title {
+        width: 300px;
         border-right: 1px solid var(--grey);
-        padding: 20px 20px 0 0;
+        text-align: center;
 
-        .table-info-detail {
-          width: 100%;
-          border-collapse: collapse;
-          display: flex;
-        }
-
-        .table-info-detail th,
-        .table-info-detail td {
-          border: 1px solid #ddd;
-          padding: 8px;
-          text-align: left;
-          font-size: 15px;
-        }
-
-        .table-info-detail tr {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-        }
-
-        .table-info-detail th {
-          color: #333;
+        h2 {
+          margin-top: 30px;
+          font-size: 40px;
+          color: var(--black);
         }
       }
 
-      .info-more--size {
+      .info-overview--detail {
         flex: 1;
-        padding: 20px 0 0 20px ;
+        margin-top: 100px;
+        height: 245px;
+        text-align: justify;
+        display: -webkit-box;
+        -webkit-line-clamp:9;
+        -webkit-box-orient:vertical;
+        overflow: hidden;
+        border-top: 1px solid var(--grey);
+        padding-top: 20px;
 
-        .table-guide-size {
+        p{
+          height: 100%;
+        }
+      }
+
+      .highlights {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin-top: 20px;
+        h3{
+          
+        }
+
+        .info-more--detail {
           width: 100%;
-          border-collapse: collapse;
+          
+
+          .table-info-detail {
+            width: 100%;
+            border-collapse: collapse;
+            display: flex;
+          }
+
+          .table-info-detail th,
+          .table-info-detail td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 15px;
+          }
+
+          .table-info-detail tr {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .table-info-detail th {
+            color: #333;
+          }
         }
 
-        .table-guide-size th,
-        .table-guide-size td {
-          border: 1px solid #ddd;
-          padding: 8px;
-          text-align: left;
-          font-size: 15px;
-        }
+        .info-more--size {
+          width: 100%;
+          margin-top: 10px;
+          .table-guide-size {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--sand-light);
+          }
 
-        .table-guide-size th {
-          color: #333;
+          .table-guide-size th,
+          .table-guide-size td {
+            border: 1px solid var(--black);
+            padding: 8px;
+            text-align: left;
+            font-size: 15px;
+          }
+
+          .table-guide-size th {
+            color: #333;
+          }
         }
       }
     }
+
+    /*=========================== PRODUCT GUIDE ============================*/
+    /*=========================== PRODUCT GUIDE ============================*/
+    /*=========================== PRODUCT GUIDE ============================*/
+    /*=========================== PRODUCT GUIDE ============================*/
+
+
   }
 }
