@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./product.module.scss";
 import {
   CartIcon,
   StarIcon,
+  CaretRightIcon,
+  CaretLeftIcon,
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import {
+  faHeart,
+  faArrowUpRightFromSquare,
+} from "@fortawesome/free-solid-svg-icons";
 
 const product = {
   id: "MH001",
@@ -39,12 +44,102 @@ const product = {
   },
 };
 
+const OutfitGuideData = {
+  id: "MH001" /* id product main */,
+  listOutfit: [
+    /* outfit 1 */
+    {
+      /* product main (t-shirt) */
+      id: "MH001",
+      img: "https://i.imgur.com/sv6NPpI.jpg",
+    },
+    {
+      /* product guide (pants) */
+      id: "MH002",
+      img: "https://i.imgur.com/S4Ivj61.jpeg",
+    },
+    {
+      /* product guide (shoes) */
+      id: "MH003",
+      img: "https://i.imgur.com/0Y5SMid.jpeg",
+    },
+    {
+      /* product guide (spare) */
+      id: "MH004",
+      img: "https://i.imgur.com/tqzkB80.jpeg",
+    },
+
+    /* outfit 2 */
+    {
+      /* product main (t-shirt) */
+      id: "MH001",
+      img: "https://i.imgur.com/sv6NPpI.jpg",
+    },
+    {
+      /* product guide (pants) */
+      id: "MH002",
+      img: "https://i.imgur.com/sv6NPpI.jpg",
+    },
+    {
+      /* product guide (shoes) */
+      id: "MH003",
+      img: "https://i.imgur.com/sv6NPpI.jpg",
+    },
+    {
+      /* product guide (spare) */
+      id: "MH004",
+      img: "https://i.imgur.com/sv6NPpI.jpg",
+    },
+  ],
+};
+
 const Product = () => {
   const [imgCenter, setImgCenter] = useState(product.listImg[0]);
   const [amountProduct, setAmountProduct] = useState(0);
   const [defaultDes, setDefaultDdes] = useState(true);
   const [size, setSize] = useState();
   const [color, setColor] = useState();
+  const [slideIndex, setSlideIndex] = useState(1);
+
+  const RenderOutfitGuide = () => {
+    return OutfitGuideData.listOutfit.map((o1, i1) => {
+      console.log(OutfitGuideData.listOutfit.length / 4);
+      if (i1 < OutfitGuideData.listOutfit.length / 4) {
+        return (
+          <div key={i1} className={styles.slide}>
+            {OutfitGuideData.listOutfit.map((o2, i2) => {
+              if (i2 < 4) {
+                return (
+                  <div key={i2} className={styles.block}>
+                    <img src={OutfitGuideData.listOutfit[i1 + i2].img}></img>
+                    <button>
+                      <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    </button>
+                  </div>
+                );
+              } else return
+            })}
+          </div>
+        );
+      }
+    });
+  };
+
+  useEffect(() => {
+    const slides = document.querySelectorAll(`.${styles.slide}`);
+    console.log(slides);
+    console.log(slideIndex)
+    if (slideIndex > slides.length) {
+      setSlideIndex(1);
+    }
+    if (slideIndex < 1) {
+      setSlideIndex(slides.length);
+    }
+    slides.forEach((slide) => {
+      slide.style.transform = "translateX(-" + (slideIndex - 1) * 100 + "%)";
+    });
+  },[slideIndex]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -261,8 +356,28 @@ const Product = () => {
             {/*================ OUTFIT GUIDE =================*/}
 
             <div className={styles["product-guide"]}>
+              <div className={styles["product-guide--title"]}>
+                <h2>Outfit Guide</h2>
+              </div>
               <div className={styles["product-guide--slides"]}>
-                
+                <RenderOutfitGuide />
+                <button
+                  onClick={() => {
+                    setSlideIndex((prev) => prev - 1);
+                  }}
+                  className={styles.prev}
+                >
+                  <CaretLeftIcon />
+                </button>
+                <button
+                  onClick={() => {
+                    setSlideIndex((prev) => prev + 1);
+        
+                  }}
+                  className={styles.next}
+                >
+                  <CaretRightIcon />
+                </button>
               </div>
             </div>
           </div>
