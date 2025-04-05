@@ -1,0 +1,24 @@
+.table-info-detail {
+  width: 100%;
+  border-collapse: collapse;
+  display: flex;
+}
+
+.table-info-detail th,
+.table-info-detail td {
+  border: 1px solid var(--grey);
+  padding: 8px;
+  text-align: left;
+  font-size: 15px;
+  
+}
+
+.table-info-detail tr {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.table-info-detail th {
+  color: var(--black);
+}

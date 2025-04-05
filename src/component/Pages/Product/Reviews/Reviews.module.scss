@@ -1,0 +1,64 @@
+.wrapper{
+    border-top: 1px solid var(--grey);
+    margin-top: 50px;
+    padding: 0 120px;
+}
+
+.container{
+    margin-top: 50px;
+
+    .heading{
+        font-size: 40px;
+        color: var(--black);
+        font-weight: 400;
+    }
+}
+
+.content{
+    border-top: 1px solid var(--grey);
+    
+    .Rate-Overview{
+        margin-top: 50px;
+        display: flex;
+        gap: 50px;
+
+        .Rate-Snapshot{
+            margin-top: 10px;
+            display:flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .Rate-Snapshot--title{
+                font-weight: 400;
+            }
+        }
+
+        .Rate-Overall{
+            margin-top: 10px;
+            margin-left: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+
+            .Rate-Overall--title{
+                font-weight: 400;
+            }
+
+            .Rate-Overall--value{
+                font-size: 50px;
+                text-align: center;
+            }
+        }
+
+        .Rate-Action{
+            margin-top: 10px;
+            margin-left: 200px;
+            
+            .Rate-Action--title{
+                font-weight: 400;
+            }
+        }
+    }
+}
+

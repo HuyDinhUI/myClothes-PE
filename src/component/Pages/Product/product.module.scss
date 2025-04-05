@@ -61,7 +61,7 @@
             img {
               width: 90%;
               height: 230px;
-              border-radius: 10px;
+              
             }
           }
         }
@@ -76,7 +76,7 @@
             img {
               width: 90%;
               height: 700px;
-              border-radius: 10px;
+              
             }
           }
         }
@@ -206,6 +206,12 @@
         .rank {
           margin-top: 20px;
           display: flex;
+          align-items: center;
+          gap: 10px;
+
+          p {
+            font-weight: lighter;
+          }
         }
 
         .star {
@@ -224,7 +230,7 @@
       border-top: 1px solid var(--grey);
       margin-top: 20px;
       display: flex;
-      gap: 20px;
+      gap: 40px;
 
       .info-overview--title {
         width: 300px;
@@ -235,20 +241,20 @@
           margin-top: 30px;
           font-size: 30px;
           color: var(--black);
+          font-weight: 500;
         }
       }
 
       .info-overview--detail {
         flex: 1;
         margin-top: 100px;
-        height: 245px;
-        text-align: justify;
-        display: -webkit-box;
-        -webkit-line-clamp: 9;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        
         border-top: 1px solid var(--grey);
         padding-top: 20px;
+
+        h3 {
+          font-weight: 500;
+        }
 
         p {
           height: 100%;
@@ -261,57 +267,17 @@
         width: 400px;
         margin-top: 20px;
         h3 {
+          font-weight: 500;
         }
 
         .info-more--detail {
           width: 100%;
-
-          .table-info-detail {
-            width: 100%;
-            border-collapse: collapse;
-            display: flex;
-          }
-
-          .table-info-detail th,
-          .table-info-detail td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-            font-size: 15px;
-          }
-
-          .table-info-detail tr {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-          }
-
-          .table-info-detail th {
-            color: #333;
-          }
         }
 
         .info-more--size {
           width: 100%;
           margin-top: 10px;
           margin-bottom: 10px;
-          .table-guide-size {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--sand-light);
-          }
-
-          .table-guide-size th,
-          .table-guide-size td {
-            border: 1px solid var(--black);
-            padding: 8px;
-            text-align: left;
-            font-size: 15px;
-          }
-
-          .table-guide-size th {
-            color: #333;
-          }
         }
       }
     }
@@ -335,13 +301,14 @@
           margin-top: 30px;
           font-size: 30px;
           color: var(--black);
+          font-weight: 500;
         }
       }
 
       .product-guide--slides {
         display: flex;
         height: 100%;
-        margin-top: 20px;
+        margin-top: 50px;
         position: relative;
         overflow: hidden;
 
@@ -364,14 +331,12 @@
             flex-direction: column;
             align-items: center;
 
-            
-            img{
+            img {
               width: 80%;
               height: 80%;
-              
             }
 
-            button{
+            button {
               width: 80%;
               height: 100%;
               border: 1px solid var(--grey);
@@ -382,28 +347,26 @@
         }
       }
 
-      .prev{
+      .prev {
         position: absolute;
         top: 50%;
-        transform: translate(0,-150%);
+        transform: translate(0, -150%);
         left: 0px;
-        
       }
 
-      .next{
+      .next {
         position: absolute;
         top: 50%;
-        transform: translate(0,-150%);
+        transform: translate(0, -150%);
         right: 0px;
       }
 
-      .prev, .next{
+      .prev,
+      .next {
         font-size: 20px;
         width: 30px;
         height: 30px;
-       
       }
-
     }
   }
 }

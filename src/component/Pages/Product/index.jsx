@@ -11,6 +11,10 @@ import {
   faHeart,
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import Reviews from "./Reviews";
+import HalfRating from "../../HalfRating";
+import GuideSizeTable from "./GuideSizeTable";
+import InfoDetailTable from "./InfoDetailTable";
 
 const product = {
   id: "MH001",
@@ -96,7 +100,8 @@ const OutfitGuideData = {
 const Product = () => {
   const [imgCenter, setImgCenter] = useState(product.listImg[0]);
   const [amountProduct, setAmountProduct] = useState(0);
-  const [defaultDes, setDefaultDdes] = useState(true);
+  const [defaultDes, setDefaultDes] = useState(true);
+  const [defaultDetail, setDefaultDetail] = useState(true);
   const [size, setSize] = useState();
   const [color, setColor] = useState();
   const [slideIndex, setSlideIndex] = useState(1);
@@ -111,13 +116,15 @@ const Product = () => {
               if (i2 < 4) {
                 return (
                   <div key={i2} className={styles.block}>
-                    <img src={OutfitGuideData.listOutfit[i1 + i2].img}></img>
+                    <img
+                      src={OutfitGuideData.listOutfit[i1 * 4 + i2].img}
+                    ></img>
                     <button>
                       <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                     </button>
                   </div>
                 );
-              } else return
+              } else return;
             })}
           </div>
         );
@@ -128,7 +135,7 @@ const Product = () => {
   useEffect(() => {
     const slides = document.querySelectorAll(`.${styles.slide}`);
     console.log(slides);
-    console.log(slideIndex)
+    console.log(slideIndex);
     if (slideIndex > slides.length) {
       setSlideIndex(1);
     }
@@ -138,7 +145,7 @@ const Product = () => {
     slides.forEach((slide) => {
       slide.style.transform = "translateX(-" + (slideIndex - 1) * 100 + "%)";
     });
-  },[slideIndex]);
+  }, [slideIndex]);
 
   return (
     <div className={styles.wrapper}>
@@ -146,11 +153,15 @@ const Product = () => {
         <div className={styles.content}>
           <div className={styles.router}></div>
           {/*================ INFO =================*/}
+          {/*================ INFO =================*/}
+          {/*================ INFO =================*/}
+          {/*================ INFO =================*/}
           <div className={styles["info"]}>
             {/*================ INFO MAIN =================*/}
             {/*================ INFO MAIN =================*/}
             {/*================ INFO MAIN =================*/}
             {/*================ INFO MAIN =================*/}
+
             <div className={styles["info-main"]}>
               <div className={styles["info-main--img"]}>
                 <div className={styles["img-slides"]}>
@@ -177,21 +188,9 @@ const Product = () => {
                   <FontAwesomeIcon icon={faHeart}/>
                 </div> */}
                 <div className={styles["rank"]}>
-                  <div className={styles.star}>
-                    <StarIcon />
-                  </div>
-                  <div className={styles.star}>
-                    <StarIcon />
-                  </div>
-                  <div className={styles.star}>
-                    <StarIcon />
-                  </div>
-                  <div className={styles.star}>
-                    <StarIcon />
-                  </div>
-                  <div className={styles.star}>
-                    <StarIcon />
-                  </div>
+                  <HalfRating />
+                  <p>4.5</p>
+                  <p>{"(1025 reviews)"}</p>
                 </div>
                 <div className={styles.prices}>
                   <p className={styles.priceOld}>
@@ -202,7 +201,7 @@ const Product = () => {
                   </p>
                 </div>
                 <div
-                  onClick={() => setDefaultDdes(!defaultDes)}
+                  onClick={() => setDefaultDes(!defaultDes)}
                   style={
                     defaultDes
                       ? {
@@ -280,6 +279,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
+
             {/*================ END INFO MAIN =================*/}
             {/*================ END INFO MAIN =================*/}
 
@@ -287,66 +287,40 @@ const Product = () => {
             {/*================ INFO OVERVIEW =================*/}
             {/*================ INFO OVERVIEW =================*/}
             {/*================ INFO OVERVIEW =================*/}
+
             <div className={styles["info-overview"]}>
               <div className={styles["info-overview--title"]}>
                 <h2>Overview</h2>
               </div>
-              <div className={styles["info-overview--detail"]}>
+              <div
+                onClick={() => setDefaultDetail(!defaultDetail)}
+                style={
+                  defaultDetail
+                    ? {
+                        height: "245px",
+                        display: "-webkit-box",
+                        WebkitLineClamp: "9",
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                      }
+                    : {}
+                }
+                className={styles["info-overview--detail"]}
+              >
                 <h3>Product detail</h3>
                 <p>{product.detail.detailProduct}</p>
               </div>
               <div className={styles.highlights}>
                 <h3>Highlights</h3>
                 <div className={styles["info-more--detail"]}>
-                  <table className={styles["table-info-detail"]}>
-                    <tr>
-                      <th>style</th>
-                      <th>season</th>
-                      <th>style-sleeve</th>
-                      <th>material</th>
-                    </tr>
-                    <tr>
-                      <td>Asian, Minalist, Stylish</td>
-                      <td>Summer</td>
-                      <td>Short</td>
-                      <td>Cotton</td>
-                    </tr>
-                  </table>
+                  <InfoDetailTable />
                 </div>
                 <div className={styles["info-more--size"]}>
-                  <table className={styles["table-guide-size"]}>
-                    <tr>
-                      <th>size</th>
-                      <th>length</th>
-                      <th>waist</th>
-                      <th>height</th>
-                      <th>weight</th>
-                    </tr>
-                    <tr>
-                      <td>M</td>
-                      <td>69cm</td>
-                      <td>106cm</td>
-                      <td>1m58-1m64</td>
-                      <td>48-55kg</td>
-                    </tr>
-                    <tr>
-                      <td>L</td>
-                      <td>71cm</td>
-                      <td>110cm</td>
-                      <td>1m64-1m70</td>
-                      <td>55-65kg</td>
-                    </tr>
-                    <tr>
-                      <td>XL</td>
-                      <td>73cm</td>
-                      <td>114cm</td>
-                      <td> {`<`}1m75</td>
-                      <td>65-73kg</td>
-                    </tr>
-                  </table>
+                  <GuideSizeTable />
                 </div>
               </div>
             </div>
+
             {/*================ END INFO OVERVIEW =================*/}
             {/*================ END INFO OVERVIEW =================*/}
 
@@ -372,7 +346,6 @@ const Product = () => {
                 <button
                   onClick={() => {
                     setSlideIndex((prev) => prev + 1);
-        
                   }}
                   className={styles.next}
                 >
@@ -380,6 +353,21 @@ const Product = () => {
                 </button>
               </div>
             </div>
+
+            {/*================ END OUTFIT GUIDE =================*/}
+            {/*================ END OUTFIT GUIDE =================*/}
+          </div>
+
+          {/*================ END INFO =================*/}
+          {/*================ END INFO =================*/}
+
+          {/*================ REVIEW =================*/}
+          {/*================ REVIEW =================*/}
+          {/*================ REVIEW =================*/}
+          {/*================ REVIEW =================*/}
+
+          <div className={styles.review}>
+            <Reviews />
           </div>
         </div>
       </div>

@@ -1,0 +1,17 @@
+.table-guide-size {
+    width: 100%;
+    border-collapse: collapse;
+    
+  }
+
+  .table-guide-size th,
+  .table-guide-size td {
+    border: 1px solid var(--grey);
+    padding: 8px;
+    text-align: left;
+    font-size: 15px;
+  }
+
+  .table-guide-size th {
+    color: var(--black);
+  }
