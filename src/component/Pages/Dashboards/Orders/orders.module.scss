@@ -17,7 +17,6 @@
   width: 100%;
   height: 100%;
   padding: 20px;
-  
 
   .Orders {
     height: 100%;
@@ -33,12 +32,11 @@
       display: flex;
       flex-direction: column;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      border-radius: 15px;
       cursor: pointer;
       position: relative;
       transition: 0.5s;
 
-      &:hover{
+      &:hover {
         box-shadow: none;
         box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
           rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -52,16 +50,12 @@
         box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
           rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
         padding: 10px;
-        
         position: relative;
         transition: 0.5s;
-        border-radius: 15px;
 
         .img-product {
           width: 120px;
           height: 200px;
-          border-radius: 15px;
-          
         }
 
         .info-product {
@@ -91,78 +85,77 @@
         }
       }
 
-      .info-ship{
+      .info-ship {
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 5px;
 
-        .total-amount{
+        .total-amount {
           display: flex;
           justify-content: space-between;
 
-          .total-amount-value{
+          .total-amount-value {
             margin-right: 4px;
           }
         }
 
-        .total-cost{
+        .total-cost {
           display: flex;
           justify-content: space-between;
 
-          .total-cost-value{
+          .total-cost-value {
             margin-right: 4px;
           }
         }
 
-        .ship-status{
+        .ship-status {
           display: flex;
           justify-content: space-between;
 
-          .ship-status-value{
+          .ship-status-value {
             margin-right: 4px;
             font-weight: bold;
           }
         }
 
-        .ship-actions{
+        .ship-actions {
           display: flex;
           justify-content: space-between;
 
-          button{
+          button {
             width: 100px;
             padding: 5px;
             font-size: 15px;
             font-weight: bold;
           }
 
-          .ship-actions-cancle{
+          .ship-actions-cancle {
             border: 1px solid var(--black);
             box-sizing: border-box;
             transition: 0.5s;
 
-            &:hover{
+            &:hover {
               background-color: black;
-              color:var(--white);
+              color: var(--white);
             }
           }
 
-          .ship-actions-contact{
+          .ship-actions-contact {
             border: 1px solid var(--blue);
             box-sizing: border-box;
             transition: 0.5s;
 
-            &:hover{
+            &:hover {
               background-color: var(--blue);
-              color:var(--white);
+              color: var(--white);
             }
           }
 
-          .ship-actions-rate{
+          .ship-actions-rate {
             color: var(--white);
             background-color: var(--yellow);
           }
-
         }
       }
     }

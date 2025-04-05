@@ -16,6 +16,13 @@
   .router {
     margin-top: 100px;
     border-bottom: 1px solid var(--grey);
+    display: flex;
+    gap: 10px;
+    font-weight: lighter;
+
+    .router-current{
+      font-weight: 400;
+    }
   }
 
   /*================================= INFO ==================================*/
@@ -205,13 +212,6 @@
 
         .rank {
           margin-top: 20px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-
-          p {
-            font-weight: lighter;
-          }
         }
 
         .star {

@@ -7,10 +7,14 @@ import {
   CaretDownIcon,
   CaretRightIcon,
   CaretLeftIcon,
+  CartIcon
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { FilterContext } from "../../../utils/FilterContext";
+import HalfRating from "../../HalfRating"
+import { Link, useNavigate } from "react-router-dom";
+
 const products = [
   {
     id: "MH001",
@@ -174,6 +178,7 @@ const Shop = () => {
   const [Products, setProducts] = useState(products);
   const { Content, setContent } = useContext(FilterContext);
   const {Cate, setCate} = useContext(FilterContext)
+  const navigate = useNavigate()
 
   var array = [];
   const renderPage = () => {
@@ -208,10 +213,10 @@ const Shop = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.slogan}>
-            <h1 className={styles["slogan-title"]}>
-              FOR ⟶ EVERYONE BUT NOTANYONE
-            </h1>
+          <div className={styles.router}>
+            <Link to='/'>Home</Link>
+            <p>{'>'}</p>
+            <Link className={styles["router-current"]}>Shop</Link>
           </div>
           <motion.div
             className={styles.products}
@@ -227,23 +232,31 @@ const Shop = () => {
                     key={index}
                     className={styles["container-product"]}
                     variants={itemVariants}
+                    onClick={()=> navigate(`/product/${pr.id}`)}
                   >
                     <img className={styles["img-product"]} src={pr.img}></img>
                     <div className={styles["info-product"]}>
                       <h3 className={styles.name}>{pr.name}</h3>
-                      <p className={styles.des}>{pr.des}</p>
-                      <div className={styles.more}>
-                        <div className={styles["more-icon"]}>
-                          <CaretDownIcon />
-                        </div>
+                      <div className={styles.rank}>
+                        <HalfRating p={true}/>
                       </div>
+                      <div className={styles.des}>
+                        <p>{pr.des}</p>
+                      </div>
+                      <div className={styles.prices}>
+                        <p className={styles.priceOld}>{pr.priceOld.toFixed(2)} USD</p>
+                        <p className={styles.priceNew}>{pr.priceNew.toFixed(2)} USD</p>
+                      </div>
+                      <button className={styles["add-to-cart"]}>
+                        <div className={styles["cart-icon"]}>
+                          <CartIcon/>
+                        </div>
+                        <p>Add to cart</p>
+                      </button>
                     </div>
                     <div className={styles.actions}>
                       <div className={styles["action-like"]}>
                         <FontAwesomeIcon icon={faHeart} />
-                      </div>
-                      <div className={styles["action-addcart"]}>
-                        <FontAwesomeIcon icon={faPlus} />
                       </div>
                     </div>
                     <div className={styles.OnSale}>

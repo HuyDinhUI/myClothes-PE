@@ -15,6 +15,7 @@ import Reviews from "./Reviews";
 import HalfRating from "../../HalfRating";
 import GuideSizeTable from "./GuideSizeTable";
 import InfoDetailTable from "./InfoDetailTable";
+import { Link } from "react-router-dom";
 
 const product = {
   id: "MH001",
@@ -151,7 +152,13 @@ const Product = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.router}></div>
+          <div className={styles.router}>
+            <Link to='/'>Home</Link>
+            <p>{'>'}</p>
+            <Link to='/shop'>Shop</Link>
+            <p>{'>'}</p>
+            <Link className={styles["router-current"]}>{product.category}</Link>
+          </div>
           {/*================ INFO =================*/}
           {/*================ INFO =================*/}
           {/*================ INFO =================*/}
@@ -188,9 +195,7 @@ const Product = () => {
                   <FontAwesomeIcon icon={faHeart}/>
                 </div> */}
                 <div className={styles["rank"]}>
-                  <HalfRating />
-                  <p>4.5</p>
-                  <p>{"(1025 reviews)"}</p>
+                  <HalfRating p={true} />
                 </div>
                 <div className={styles.prices}>
                   <p className={styles.priceOld}>
