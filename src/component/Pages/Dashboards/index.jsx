@@ -6,6 +6,7 @@ import Cart from "../Dashboards/Cart";
 import Orders from "./Orders";
 import { ContentContext } from "../../../utils/ContentContext";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Dashboards = () => {
   const [user, setUser] = useState(null);
@@ -13,20 +14,21 @@ const Dashboards = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-        if (Content === 'Log out'){
-          localStorage.removeItem("userInfo");
-          localStorage.removeItem("accessToken");
-          localStorage.removeItem("refreshToken");
-          navigate("/login");
-        }
-        
-     
+    const fetchData = async () => {
+      const res = await authorizedAxiosInstance.delete(
+        "http://localhost:5023/v1/users/logout"
+      );
+      navigate("/login");
+    };
+    if (Content === "Log out") {
+      fetchData();
+    }
   }, [Content]);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await authorizedAxiosInstance.get(
-        "http://localhost:5023/v1/dashboards/access"
+        "http://localhost:5023/v1/dashboards/info"
       );
       console.log(res.data);
       setUser(res.data);
@@ -41,7 +43,7 @@ const Dashboards = () => {
         <div className={styles.content}>
           {Content === "Info" && <Info />}
           {Content === "Cart" && <Cart />}
-          {Content === "Orders" && <Orders/>}
+          {Content === "Orders" && <Orders />}
         </div>
       </div>
     </div>

@@ -17,25 +17,14 @@ const Login = () => {
   } = useForm();
 
   const submitLogin = async (data) => {
-    // const data = {
-    //   username: username,
-    //   password: password,
-    // };
+   
     console.log("submit login: ", data);
     try {
       const res = await authorizedAxiosInstance.post(
         "http://localhost:5023/v1/users/login",
         data
       );
-      const userInfo = {
-        id: res.data.id,
-        username: res.data.username,
-        email: res.data.email,
-      };
-      localStorage.setItem("userInfo", JSON.stringify(userInfo));
-      localStorage.setItem("accessToken", res.data.accessToken);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
-      navigate("/dashboards");
+      navigate(`/dashboards/${res.data.username}`);
     } catch (error) {}
   };
 
@@ -73,7 +62,7 @@ const Login = () => {
                 <input
                   required
                   type="password"
-                  {...register("password", {
+                  {...register("passwordHash", {
                     required: "Password cannot be blank",
                   })}
                   className={styles["input-form"]}
