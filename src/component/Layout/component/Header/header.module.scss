@@ -1,12 +1,12 @@
 .wrapper{
-    --width-default:1460px;
-    width: 100%;
+    width: var(--width-default);
     display: flex;
-    justify-content: center;
+    
     margin-top: 10px;
 }
 
 .container{
+    flex: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,6 +23,7 @@
     .navbar{
         flex:1;
         .navbar-container{
+            width: 100%;
             display: flex;
             justify-content: center;
             gap:10rem;

@@ -1,12 +1,11 @@
 .wrapper {
-  --width-default: 1460px;
   --width-grid: calc(730px - calc(0.5rem / 2));
   margin-top: 20px;
   position: relative;
 }
 
 .container {
-  width: var(--width-default);
+ width: 100%;
 }
 
 .content {
