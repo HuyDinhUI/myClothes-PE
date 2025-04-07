@@ -4,10 +4,10 @@ import {} from "@fortawesome/free-solid-svg-icons";
 import {} from "@fortawesome/free-regular-svg-icons";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
-import withAutoplay from 'react-awesome-slider/dist/autoplay';
+import withAutoplay from "react-awesome-slider/dist/autoplay";
+import Signup from "../Signup";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
-
 
 const Home = () => {
   const productSeller = [
@@ -91,20 +91,6 @@ const Home = () => {
                   );
                 })}
               </div>
-            </div>
-          </div>
-          <div className={styles.banner}>
-            <div className={styles["banner-slider"]}>
-              <AutoplaySlider 
-               play={true}
-               cancelOnInteraction={false}
-               interval={6000}
-              >
-                <div data-src='https://i.pinimg.com/736x/f0/39/02/f039021792dd18322970d4023362f060.jpg'>1</div>
-                <div data-src='https://i.pinimg.com/736x/df/a1/9a/dfa19aee94e4b97c3238f63d4aaeb1af.jpg'>2</div>
-                <div data-src='https://i.pinimg.com/736x/f8/ec/93/f8ec933e19e32f9c159f4de83a72ae55.jpg'>3</div>
-                <div data-src='https://i.pinimg.com/736x/2d/95/b5/2d95b5c6697f62daaef4c61112012c1c.jpg'>4</div>
-              </AutoplaySlider>
             </div>
           </div>
           <div className={styles.saleOff}>

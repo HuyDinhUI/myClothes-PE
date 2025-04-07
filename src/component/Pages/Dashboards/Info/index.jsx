@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./info.module.scss";
 
-const Info = () => {
+const Info = ({infoUser}) => {
   const [namebank, setNameBank] = useState(null);
   const [typecard, setTypeCard] = useState(null);
   const [idcard, SetIdCard] = useState(null);
@@ -9,6 +9,7 @@ const Info = () => {
   const [monththru, setMonthThru] = useState(null);
   const [yearthru, setYearThru] = useState(null);
   const [cvc,setCVC] = useState(null)
+  console.log(infoUser)
 
   return (
     <div className={styles.wrapper}>
@@ -26,23 +27,31 @@ const Info = () => {
                 <input
                   placeholder="username"
                   className={styles["input-info"]}
+                  value={infoUser.username}
+                 
                 ></input>
                 <input
                   placeholder="fullname"
                   className={styles["input-info"]}
+                  value={infoUser.fullName}
+                  
                 ></input>
                 <input
                   placeholder="phone number"
                   className={styles["input-info"]}
+                  value={infoUser.phone}
+                  
                 ></input>
                 <input
                   placeholder="address"
                   className={styles["input-info"]}
+                  value={infoUser.address}
                 ></input>
                 <input
                   type="email"
                   placeholder="email"
                   className={styles["input-info"]}
+                  value={infoUser.email}
                 ></input>
                 <button className={styles["btn-info"]}>save</button>
               </form>

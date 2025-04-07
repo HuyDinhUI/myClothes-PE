@@ -27,6 +27,7 @@ authorizedAxiosInstance.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
+    toast.success(response?.data?.message)
     return response;
   },
   function (error) {

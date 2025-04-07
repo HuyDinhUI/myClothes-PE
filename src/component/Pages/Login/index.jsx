@@ -24,7 +24,10 @@ const Login = () => {
         "http://localhost:5023/v1/users/login",
         data
       );
-      navigate(`/dashboards/${res.data.username}`);
+      if (res.data.role === 'customer'){
+        navigate(`/dashboards`);
+      } else navigate('/admin')
+      
     } catch (error) {}
   };
 
@@ -62,7 +65,7 @@ const Login = () => {
                 <input
                   required
                   type="password"
-                  {...register("passwordHash", {
+                  {...register("password", {
                     required: "Password cannot be blank",
                   })}
                   className={styles["input-form"]}

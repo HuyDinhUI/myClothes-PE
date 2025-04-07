@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Dashboards = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const { Content } = useContext(ContentContext);
   const navigate = useNavigate();
 
@@ -25,12 +25,13 @@ const Dashboards = () => {
     }
   }, [Content]);
 
+  
   useEffect(() => {
     const fetchData = async () => {
       const res = await authorizedAxiosInstance.get(
         "http://localhost:5023/v1/dashboards/info"
       );
-      console.log(res.data);
+      console.log(res.data)
       setUser(res.data);
     };
 
@@ -41,7 +42,7 @@ const Dashboards = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          {Content === "Info" && <Info />}
+          {Content === "Info" && user && <Info infoUser={user} />}
           {Content === "Cart" && <Cart />}
           {Content === "Orders" && <Orders />}
         </div>
