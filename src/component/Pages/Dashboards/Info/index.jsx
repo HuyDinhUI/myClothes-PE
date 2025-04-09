@@ -1,15 +1,33 @@
 import { useState } from "react";
 import styles from "./info.module.scss";
+import { useForm } from "react-hook-form";
+import authorizedAxiosInstance from "../../../../utils/AthorizedAxios";
 
-const Info = ({infoUser}) => {
+const Info = ({ infoUser }) => {
   const [namebank, setNameBank] = useState(null);
   const [typecard, setTypeCard] = useState(null);
   const [idcard, SetIdCard] = useState(null);
   const [namecard, SetNameCard] = useState(null);
   const [monththru, setMonthThru] = useState(null);
   const [yearthru, setYearThru] = useState(null);
-  const [cvc,setCVC] = useState(null)
-  console.log(infoUser)
+  const [cvc, setCVC] = useState(null);
+  console.log(infoUser);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const submitUpdateInfoUser = async (data) => {
+    console.log("submit login: ", data);
+    try {
+      const res = await authorizedAxiosInstance.put(
+        "http://localhost:5023/v1/dashboards/update",
+        data
+      );
+    } catch (error) {}
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -23,32 +41,49 @@ const Info = ({infoUser}) => {
               ></img>
             </div>
             <div className={styles.information}>
-              <form className={styles["form-info"]}>
+              <form
+                onSubmit={handleSubmit(submitUpdateInfoUser)}
+                className={styles["form-info"]}
+              >
                 <input
+                  type="text"
+                  {...register("username", {
+                    required: "Email cannot be blank",
+                  })}
                   placeholder="username"
                   className={styles["input-info"]}
                   value={infoUser.username}
-                 
                 ></input>
                 <input
+                  type="text"
+                  {...register("fullName", {
+                    required: "FullName cannot be blank",
+                  })}
                   placeholder="fullname"
                   className={styles["input-info"]}
                   value={infoUser.fullName}
-                  
                 ></input>
                 <input
+                  type="text"
+                  {...register("phone", {
+                    required: "Phone cannot be blank",
+                  })}
                   placeholder="phone number"
                   className={styles["input-info"]}
                   value={infoUser.phone}
-                  
                 ></input>
                 <input
+                  type="text"
+                  {...register("address")}
                   placeholder="address"
                   className={styles["input-info"]}
                   value={infoUser.address}
                 ></input>
                 <input
                   type="email"
+                  {...register("email", {
+                    required: "Email cannot be blank",
+                  })}
                   placeholder="email"
                   className={styles["input-info"]}
                   value={infoUser.email}
@@ -134,11 +169,11 @@ const Info = ({infoUser}) => {
                   className={styles["input-card"]}
                   placeholder="year due"
                 ></input>
-                <input 
-                value={cvc} 
-                onChange={(e) => setCVC(e.target.value)}
-                className={styles["input-card"]}
-                placeholder="CVC"
+                <input
+                  value={cvc}
+                  onChange={(e) => setCVC(e.target.value)}
+                  className={styles["input-card"]}
+                  placeholder="CVC"
                 ></input>
                 <button className={styles["btn-card"]}>save</button>
               </form>

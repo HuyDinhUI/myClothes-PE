@@ -48,7 +48,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <DefaultLayout>
+                <Login />
+              </DefaultLayout>
+            }
+          />
         </Routes>
       </div>
     </Router>

@@ -4,11 +4,25 @@ import {} from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useForm } from "react-hook-form";
 import authorizedAxiosInstance from "../../../utils/AthorizedAxios";
-import { Navigate, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { style } from "@mui/system";
+import { useState, useEffect } from "react";
+import calculateTimeLeft from "../../../utils/TimeLeft";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const targetDate = new Date("2025-05-09T23:59:59").toISOString();
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft(targetDate));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
 
   const {
     register,
@@ -17,17 +31,15 @@ const Login = () => {
   } = useForm();
 
   const submitLogin = async (data) => {
-   
     console.log("submit login: ", data);
     try {
       const res = await authorizedAxiosInstance.post(
         "http://localhost:5023/v1/users/login",
         data
       );
-      if (res.data.role === 'customer'){
+      if (res.data.role === "customer") {
         navigate(`/dashboards`);
-      } else navigate('/admin')
-      
+      } else navigate("/admin");
     } catch (error) {}
   };
 
@@ -35,67 +47,86 @@ const Login = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles["form-login"]}>
-            <h1 className={styles.heading}>Log in</h1>
-            <form onSubmit={handleSubmit(submitLogin)} className={styles.form}>
-              <div className={styles["form-group"]}>
-                <span className={styles["title-form"]}>username</span>
-                <input
-                  required
-                  type="text"
-                  {...register("username", {
-                    required: "Email cannot be blank",
-                  })}
-                  className={styles["input-form"]}
-                  
-                ></input>
+          <div className={styles.router}>
+            <Link to="/dashboards">Dashboard</Link>
+            <p>{">"}</p>
+            <Link className={styles["router-current"]} to="/login">
+              Log in
+            </Link>
+          </div>
+          <div className={styles.main}>
+            <div className={styles["form-login"]}>
+              <form
+                onSubmit={handleSubmit(submitLogin)}
+                className={styles.form}
+              >
+                <div className={styles.heading}>
+                  <h2>SIGN IN TO YOUR ACCOUNT</h2>
+                  <p>
+                    First time visiting? You might need to{" "}
+                    <a href="/resetpassword" className={styles["link-reset"]}>
+                      reset your password.
+                    </a>
+                  </p>
+                </div>
+                <div className={styles["form-group"]}>
+                  <input
+                    placeholder="Username"
+                    required
+                    type="text"
+                    {...register("username", {
+                      required: "Email cannot be blank",
+                    })}
+                    className={styles["input-form"]}
+                  ></input>
+                </div>
+                <div className={styles["form-group"]}>
+                  <input
+                    placeholder="Email"
+                    required
+                    type="email"
+                    {...register("email", {
+                      required: "Email cannot be blank",
+                    })}
+                    className={styles["input-form"]}
+                  ></input>
+                </div>
+                <div className={styles["form-group"]}>
+                  <input
+                    placeholder="Password"
+                    required
+                    type="password"
+                    {...register("password", {
+                      required: "Password cannot be blank",
+                    })}
+                    className={styles["input-form"]}
+                  ></input>
+                </div>
+                <button className={styles["submit-btn"]} type="submit">
+                  Sign in
+                </button>
+                <div className={styles.AuthO}>
+                  <a>
+                    <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
+                  </a>
+                  <a>
+                    <FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon>
+                  </a>
+                </div>
+              </form>
+            </div>
+            <div className={styles["create-account"]}>
+              <div className={styles["voucher"]}>
+                <div className={styles.heading}>
+                  <h2>CREATE ACCOUNT TO RECEIVE VOUCHER</h2>
+                  <p>Create an account and receive a voucher up to 50%</p>
+                </div>
+                <img src="https://i.pinimg.com/736x/71/72/c1/7172c1ca448d8d1e9eadf267fbba37f0.jpg"></img>
+                <button onClick={()=>navigate('/signup')} className={styles["signup-btn"]}>
+                  CREATE ACCOUNT
+                </button>
               </div>
-              <div className={styles["form-group"]}>
-                <span className={styles["title-form"]}>email</span>
-                <input
-                  required
-                  type="email"
-                  {...register("email", { required: "Email cannot be blank" })}
-                  className={styles["input-form"]}
-                  
-                ></input>
-              </div>
-              <div className={styles["form-group"]}>
-                <span className={styles["title-form"]}>password</span>
-                <input
-                  required
-                  type="password"
-                  {...register("password", {
-                    required: "Password cannot be blank",
-                  })}
-                  className={styles["input-form"]}
-                  
-                ></input>
-              </div>
-              <button className={styles["submit-btn"]} type="submit">
-                SUBMIT
-              </button>
-              <p className={styles["reset-pass"]}>
-                Forgot{" "}
-                <a href="/resetpassword" className={styles["link-reset"]}>
-                  password ?
-                </a>
-              </p>
-              <p className={styles.signup}>
-                Don't have an account?{" "}
-                <a href="/signup" className={styles["link-signup"]}>
-                  Sign up
-                </a>
-              </p>
-              <div className={styles.AuthO}>
-                <a>
-                  <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
-                </a>
-                <a>
-                  <FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon>
-                </a>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
