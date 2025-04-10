@@ -11,18 +11,7 @@ import calculateTimeLeft from "../../../utils/TimeLeft";
 
 const Login = () => {
   const navigate = useNavigate();
-
-  const targetDate = new Date("2025-05-09T23:59:59").toISOString();
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft(targetDate));
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetDate]);
+  const [loading, setLoading] = useState(true);
 
   const {
     register,
@@ -38,9 +27,10 @@ const Login = () => {
         data
       );
       if (res.data.role === "customer") {
-        navigate(`/dashboards`);
+        navigate(`/dashboards/Info`);
       } else navigate("/admin");
     } catch (error) {}
+    
   };
 
   return (
@@ -48,7 +38,7 @@ const Login = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.router}>
-            <Link to="/dashboards">Dashboard</Link>
+            <Link to="/dashboards/info">Dashboard</Link>
             <p>{">"}</p>
             <Link className={styles["router-current"]} to="/login">
               Log in

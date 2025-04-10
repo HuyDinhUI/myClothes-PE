@@ -5,8 +5,8 @@ const Popper = ({ children, data }) => {
   return (
     <Tippy
     interactive
-    
     placement="bottom-end"
+    
       render={(attrs) => (
         <div className={styles.wrapper} tabIndex="-1" {...attrs}>
           <div className={styles.container}>

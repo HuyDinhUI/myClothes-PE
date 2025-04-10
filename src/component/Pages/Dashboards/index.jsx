@@ -5,13 +5,13 @@ import Info from "../Dashboards/Info";
 import Cart from "../Dashboards/Cart";
 import Orders from "./Orders";
 import { ContentContext } from "../../../utils/ContentContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Dashboards = () => {
   const [user, setUser] = useState();
-  const { Content } = useContext(ContentContext);
   const navigate = useNavigate();
+  const {page} = useParams()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,10 +20,10 @@ const Dashboards = () => {
       );
       navigate("/login");
     };
-    if (Content === "Log out") {
+    if (page === "Log out") {
       fetchData();
     }
-  }, [Content]);
+  }, [page]);
 
   
   useEffect(() => {
@@ -42,9 +42,9 @@ const Dashboards = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          {Content === "Info" && user && <Info infoUser={user} />}
-          {Content === "Cart" && <Cart />}
-          {Content === "Orders" && <Orders />}
+          {page === "Info" && user && <Info infoUser={user} />}
+          {page === "Cart" && <Cart />}
+          {page === "Orders" && <Orders />}
         </div>
       </div>
     </div>

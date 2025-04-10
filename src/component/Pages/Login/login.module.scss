@@ -17,7 +17,7 @@
     flex-direction: column;
 
     .router {
-      margin-top: 100px;
+      padding: 20px 0;
       border-bottom: 0.5px solid var(--grey);
       display: flex;
       gap: 10px;
@@ -48,7 +48,7 @@
     .form-login {
       display: flex;
       justify-content: center;
-      padding-top: 100px;
+      padding-top: 70px;
       height: 100%;
 
       .form {
@@ -89,7 +89,7 @@
         }
 
         .input-form {
-          padding: 10px;
+          padding: 10px 0;
           width: 100%;
           border-bottom: 1px solid var(--black);
           box-sizing: border-box;
@@ -108,6 +108,12 @@
         color: var(--black);
         padding: 20px 0;
         border: 1px solid var(--black);
+        transition: 0.5s;
+
+        &:hover{
+          background-color: var(--black);
+          color: var(--white);
+        }
       }
 
       .signup {
@@ -135,8 +141,11 @@
     .create-account {
       display: flex;
       justify-content: center;
-      padding-top: 100px;
+      padding-top: 70px;
       height: 100%;
+      
+
+      
 
       .voucher {
         display: flex;
@@ -175,6 +184,12 @@
         color: var(--black);
         padding: 20px 0;
         border: 1px solid var(--black);
+        transition: 0.5s;
+
+        &:hover{
+          background-color: var(--black);
+          color: var(--white);
+        }
       }
 
     }

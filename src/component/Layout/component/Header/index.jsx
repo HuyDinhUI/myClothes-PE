@@ -21,10 +21,8 @@ const Header = () => {
           <div className={styles["navbar-container"]}>
             <Link to='/' className={styles["nav-link"]}>HOME</Link>
             <Link to='/shop' className={styles["nav-link"]}>SHOP</Link>
-            <Link className={styles["nav-link"]}>ABOUT</Link>
-            <Link className={styles["nav-link"]}>DISCOVER</Link>
-            <Link className={styles["nav-link"]}>SOCIAL</Link>
-            <Link className={styles["nav-link"]}>OUTFIT</Link>
+            <Link className={styles["nav-link"]}>ABOUT US</Link>
+            <Link className={styles["nav-link"]}>BLOG</Link>
           </div>
         </div>
         <div className={styles.actions}>
@@ -34,9 +32,7 @@ const Header = () => {
                 className={styles["icon-search"]}
               ></SearchIcon>
             </Popper>
-            <ContactsIcon className={styles.info} onClick={() => navigate('/dashboards')}></ContactsIcon>
-            {/* <button className={styles["Signup-btn"]}>Sign up</button>
-            <button className={styles["Login-btn"]}>Log in</button> */}
+            <ContactsIcon className={styles.info} onClick={() => navigate('/dashboards/Info')}></ContactsIcon>
           </div>
         </div>
       </div>

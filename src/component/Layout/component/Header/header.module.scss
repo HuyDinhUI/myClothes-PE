@@ -1,8 +1,7 @@
 .wrapper{
-    width: var(--width-default);
     display: flex;
-    
-    margin-top: 10px;
+    width: 100%;
+    background-color: var(--black);
 }
 
 .container{
@@ -11,8 +10,8 @@
     justify-content: space-between;
     align-items: center;
     width: var(--width-default);
-    border: 1px solid var(--black);
     padding:20px;
+    color: var(--white);
 
     .title{
         font-family: var(--font-brand-logo),serif;
@@ -28,6 +27,11 @@
             justify-content: center;
             gap:10rem;
             font-family: var(--font-brand-heading);
+
+            a{
+                color:var(--white)
+            }
+            
         }
     }
 }

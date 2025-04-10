@@ -11,6 +11,7 @@ import {
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { ContentContext } from "../../../../utils/ContentContext";
 import { motion } from "framer-motion";
+import { useParams, useNavigate } from "react-router-dom";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -55,7 +56,9 @@ const Item = [
 ];
 
 const ItemUser = () => {
-  const { Content, setContent } = useContext(ContentContext);
+  const {page} = useParams()
+  const navigate = useNavigate()
+
   return (
     <motion.div
       className={styles["item-user"]}
@@ -68,14 +71,14 @@ const ItemUser = () => {
           <motion.button
             variants={itemVariants}
             style={
-              Content === item.title
+              page === item.title
                 ? {
                     color: "var(--white)",
                     backgroundColor: "black",
                   }
                 : {}
             }
-            onClick={() => setContent(item.title)}
+            onClick={() => navigate(`/dashboards/${item.title}`)}
             key={index}
             className={styles["btn-item"]}
           >
