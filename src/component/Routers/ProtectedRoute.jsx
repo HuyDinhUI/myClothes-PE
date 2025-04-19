@@ -2,31 +2,39 @@ import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import authorizedAxiosInstance from "../../utils/AthorizedAxios";
 import { Triangle } from "react-loader-spinner";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const ProtectedRoute = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const { isAuthenticated } = useAuth0();
+  const [auth, setAuth] = useState(null);
 
   useEffect(() => {
-    const checkLogin = async () => {
-      try {
-        const res = await authorizedAxiosInstance(
-          "http://localhost:5023/v1/dashboards/info"
-        );
+    if (!isAuthenticated) {
+      const checkLogin = async () => {
+        try {
+          const res = await authorizedAxiosInstance(
+            "http://localhost:5023/v1/dashboards/info"
+          );
 
-        if (res.data) {
-          setIsAuthenticated(true);
-        } else {
-          setIsAuthenticated(false);
+          if (res.data) {
+            setAuth(true);
+          } else {
+            setAuth(false);
+          }
+        } catch (error) {
+          setAuth(false);
         }
-      } catch (error) {
-        setIsAuthenticated(false);
-      }
-    };
+      };
 
-    checkLogin();
+      checkLogin();
+    }
+
+    else {
+      setAuth(true)
+    }
   }, []);
 
-  if (isAuthenticated === null)
+  if (auth === null)
     return (
       <Triangle
         visible={true}
@@ -44,7 +52,7 @@ const ProtectedRoute = ({ children }) => {
       ></Triangle>
     );
 
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!auth) return <Navigate to="/login" replace />;
 
   return children;
 };

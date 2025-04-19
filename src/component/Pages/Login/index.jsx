@@ -8,11 +8,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { style } from "@mui/system";
 import { useState, useEffect } from "react";
 import calculateTimeLeft from "../../../utils/TimeLeft";
+import { useAuth0 } from '@auth0/auth0-react';
+
+
 
 const Login = () => {
+  const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-
   const {
     register,
     handleSubmit,
@@ -95,13 +98,8 @@ const Login = () => {
                 <button className={styles["submit-btn"]} type="submit">
                   Sign in
                 </button>
-                <div className={styles.AuthO}>
-                  <a>
-                    <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
-                  </a>
-                  <a>
-                    <FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon>
-                  </a>
+                <div onClick={()=> loginWithRedirect()} className={styles.AuthO}>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Logo_de_Auth0.svg"></img>
                 </div>
               </form>
             </div>
