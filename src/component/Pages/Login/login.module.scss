@@ -54,7 +54,7 @@
       .form {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 2rem;
         margin-top: 20px;
         width: 400px;
 
@@ -129,16 +129,19 @@
 
       .AuthO {
         width: 100%;
+        font-weight: 800;
+        color: var(--white);
+        padding: 20px 0;
+        background-color: var(--fail-color);
+        transition: 0.5s;
         display: flex;
-        justify-content: center;
         align-items: center;
-        gap: 10px;
-        font-size: 30px;
-        color: var(--black);
+        justify-content: center;
+        cursor: pointer;
+        gap: 5px;
 
-        img{
-          width: 100px;
-          height: 50px;
+        p{
+          color: var(--white);
         }
       }
     }

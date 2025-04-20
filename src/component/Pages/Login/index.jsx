@@ -8,9 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { style } from "@mui/system";
 import { useState, useEffect } from "react";
 import calculateTimeLeft from "../../../utils/TimeLeft";
-import { useAuth0 } from '@auth0/auth0-react';
-
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Login = () => {
   const { loginWithRedirect } = useAuth0();
@@ -33,7 +31,6 @@ const Login = () => {
         navigate(`/dashboards/Info`);
       } else navigate("/admin");
     } catch (error) {}
-    
   };
 
   return (
@@ -98,8 +95,15 @@ const Login = () => {
                 <button className={styles["submit-btn"]} type="submit">
                   Sign in
                 </button>
-                <div onClick={()=> loginWithRedirect()} className={styles.AuthO}>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Logo_de_Auth0.svg"></img>
+                <div
+                  onClick={() =>
+                    (window.location.href =
+                      "http://localhost:5023/v1/auth/google")
+                  }
+                  className={styles.AuthO}
+                >
+                  <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
+                  <p>Log in with Google</p>
                 </div>
               </form>
             </div>
@@ -110,7 +114,10 @@ const Login = () => {
                   <p>Create an account and receive a voucher up to 50%</p>
                 </div>
                 <img src="https://i.pinimg.com/736x/71/72/c1/7172c1ca448d8d1e9eadf267fbba37f0.jpg"></img>
-                <button onClick={()=>navigate('/signup')} className={styles["signup-btn"]}>
+                <button
+                  onClick={() => navigate("/signup")}
+                  className={styles["signup-btn"]}
+                >
                   CREATE ACCOUNT
                 </button>
               </div>

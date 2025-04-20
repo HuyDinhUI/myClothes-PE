@@ -37,7 +37,7 @@ const Info = ({ infoUser }) => {
             <div className={styles.avatar}>
               <img
                 className={styles["img-avatar"]}
-                src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/ff832a9b10986dd21cefbad621a3ca91~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=582d0c55&x-expires=1742479200&x-signature=hGtGRL4riCrUe8i64%2FNDsMphs78%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2"
+                src={infoUser.avatar}
               ></img>
             </div>
             <div className={styles.information}>

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+ZA:wght@100..400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 @font-face {
   font-family: "StretchPro";
@@ -15,7 +17,7 @@
   --white: #fff;
   --text-color: rgb(22, 24, 35);
   --font-brand-logo: "Playwrite ZA";
-  --font-brand-heading: "StretchPro";
+  --font-brand-heading: "Montserrat", sans-serif;
   --width-default: 95%;
   --fail-color: #f21b3f;
   --success-color: #29bf12;
@@ -33,12 +35,31 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  ::-webkit-scrollbar {
+    width: 3px; /* Chiều rộng của thanh cuộn dọc */
+    height: 8px; /* Chiều cao của thanh cuộn ngang */
+    border-radius: none;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Màu nền track */
+    border-radius: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--black); /* Màu nút kéo */
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Hover */
+  }
 }
 
 body {
-  font-family: "Roboto", serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
-
   line-height: 1.5;
   color: var(--text-color);
 }
