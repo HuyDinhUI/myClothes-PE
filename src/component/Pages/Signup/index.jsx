@@ -34,17 +34,16 @@ const Signup = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.router}>
-            <Link to="/dashboards/info">Dashboard</Link>
+            <Link to="/">Home</Link>
+            <p>{">"}</p>
+            <Link to="/login">Log in</Link>
             <p>{">"}</p>
             <Link className={styles["router-current"]} to="/signup">
               Sign up
             </Link>
           </div>
-         <div className={styles["form-signup"]}>
-            <form
-              onSubmit={handleSubmit(submitSignUp)}
-              className={styles.form}
-            >
+          <div className={styles["form-signup"]}>
+            <form onSubmit={handleSubmit(submitSignUp)} className={styles.form}>
               <h1 className={styles.heading}>Sign up</h1>
               <div className={styles["form-group"]}>
                 <input
@@ -52,17 +51,17 @@ const Signup = () => {
                   required
                   type="text"
                   {...register("username", {
-                    required: "Email cannot be blank",
+                    required: "Username cannot be blank",
                   })}
                   className={styles["input-form"]}
                 ></input>
               </div>
               <div className={styles["form-group"]}>
                 <input
-                  placeholder="Email"
+                  placeholder="Phone"
                   required
-                  type="email"
-                  {...register("email", { required: "Email cannot be blank" })}
+                  type="text"
+                  {...register("phone", { required: "Phone cannot be blank" })}
                   className={styles["input-form"]}
                 ></input>
               </div>
@@ -95,12 +94,12 @@ const Signup = () => {
               </button>
               <p className={styles.login}>
                 You have an account?{" "}
-                <a href="/login" className={styles["link-login"]}>
+                <Link to="/login" className={styles["link-login"]}>
                   Log in
-                </a>
+                </Link>
               </p>
             </form>
-         </div>
+          </div>
         </div>
       </div>
     </div>

@@ -15,34 +15,26 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     .router {
+      width: 95%;
       padding: 20px 0;
-      border-bottom: 0.5px solid var(--grey);
       display: flex;
       gap: 10px;
-      font-weight: lighter;
+      font-weight: 300;
+      border-bottom: 1px solid var(--grey);
 
       .router-current {
-        font-weight: 400;
+        font-weight: 500;
       }
     }
 
     .main {
+      width: 100%;
       position: relative;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      
 
-      &::after {
-        content: "";
-        height: 100%;
-        width: 0.5px;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: var(--grey);
-      }
     }
 
     .form-login {
@@ -54,24 +46,23 @@
       .form {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
         margin-top: 20px;
         width: 400px;
 
         .heading {
-          display: flex;
-          flex-direction: column;
+          width: 100%;
+          margin-bottom: 30px;
 
           h2 {
             font-weight: 900;
-            font-size: 20px;
-            text-align: left;
+            font-size: 30px;
+            text-align: center;
             color: var(--black);
           }
         }
 
         p {
-          font-size: 17px;
+          font-size: 13px;
           text-align: left;
           color: var(--black);
 
@@ -89,7 +80,7 @@
         }
 
         .input-form {
-          padding: 10px 0;
+          padding: 25px 10px;
           width: 100%;
           border-bottom: 1px solid var(--black);
           box-sizing: border-box;
@@ -100,15 +91,22 @@
             background-color: rgba(255, 255, 255, 0.103);
           }
         }
+
+        p{
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 0;
+        }
       }
 
       .submit-btn {
         width: 100%;
-        font-weight: 800;
+        font-weight: 700;
         color: var(--black);
         padding: 20px 0;
         border: 1px solid var(--black);
         transition: 0.5s;
+        margin-top: 20px;
 
         &:hover{
           background-color: var(--black);
@@ -129,9 +127,9 @@
 
       .AuthO {
         width: 100%;
-        font-weight: 800;
+        font-weight: 700;
         color: var(--white);
-        padding: 20px 0;
+        padding: 10px 0;
         background-color: var(--fail-color);
         transition: 0.5s;
         display: flex;
@@ -139,6 +137,7 @@
         justify-content: center;
         cursor: pointer;
         gap: 5px;
+        margin-top: 10px;
 
         p{
           color: var(--white);
@@ -151,31 +150,29 @@
       justify-content: center;
       padding-top: 70px;
       height: 100%;
-      
-
-      
-
+    
       .voucher {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        
         margin-top: 20px;
         width: 400px;
 
         .heading {
           display: flex;
           flex-direction: column;
+          margin-bottom: 30px;
 
           h2 {
-            font-weight: 900;
-            font-size: 20px;
+            font-weight: 700;
+            font-size: 15px;
             text-align: left;
             color: var(--black);
           }
         }
 
         p {
-          font-size: 17px;
+          font-size: 13px;
           text-align: left;
           color: var(--black);
         }
@@ -183,16 +180,19 @@
 
       img {
         width: 100%;
-        height: 400px;
+        height: auto;
+        
+        
       } 
 
       .signup-btn{
         width: 100%;
-        font-weight: 900;
+        font-weight: 700;
         color: var(--black);
         padding: 20px 0;
         border: 1px solid var(--black);
         transition: 0.5s;
+       
 
         &:hover{
           background-color: var(--black);

@@ -38,6 +38,8 @@ const Login = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.router}>
+            <Link to="/">Home</Link>
+            <p>{">"}</p>
             <Link to="/dashboards/info">Dashboard</Link>
             <p>{">"}</p>
             <Link className={styles["router-current"]} to="/login">
@@ -51,32 +53,15 @@ const Login = () => {
                 className={styles.form}
               >
                 <div className={styles.heading}>
-                  <h2>SIGN IN TO YOUR ACCOUNT</h2>
-                  <p>
-                    First time visiting? You might need to{" "}
-                    <a href="/resetpassword" className={styles["link-reset"]}>
-                      reset your password.
-                    </a>
-                  </p>
+                  <h2>Log in</h2>
                 </div>
                 <div className={styles["form-group"]}>
                   <input
-                    placeholder="Username"
+                    placeholder="Phone"
                     required
                     type="text"
-                    {...register("username", {
-                      required: "Email cannot be blank",
-                    })}
-                    className={styles["input-form"]}
-                  ></input>
-                </div>
-                <div className={styles["form-group"]}>
-                  <input
-                    placeholder="Email"
-                    required
-                    type="email"
-                    {...register("email", {
-                      required: "Email cannot be blank",
+                    {...register("phone", {
+                      required: "Phone cannot be blank",
                     })}
                     className={styles["input-form"]}
                   ></input>
@@ -92,8 +77,11 @@ const Login = () => {
                     className={styles["input-form"]}
                   ></input>
                 </div>
+                <p>
+                  Forget password ? <a>reset now</a>
+                </p>
                 <button className={styles["submit-btn"]} type="submit">
-                  Sign in
+                  SIGN IN
                 </button>
                 <div
                   onClick={() =>
@@ -105,22 +93,11 @@ const Login = () => {
                   <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
                   <p>Log in with Google</p>
                 </div>
+                <p>
+                  You don't have account ? <Link to='/signup'>Sign up</Link>
+                </p>
+                
               </form>
-            </div>
-            <div className={styles["create-account"]}>
-              <div className={styles["voucher"]}>
-                <div className={styles.heading}>
-                  <h2>CREATE ACCOUNT TO RECEIVE VOUCHER</h2>
-                  <p>Create an account and receive a voucher up to 50%</p>
-                </div>
-                <img src="https://i.pinimg.com/736x/71/72/c1/7172c1ca448d8d1e9eadf267fbba37f0.jpg"></img>
-                <button
-                  onClick={() => navigate("/signup")}
-                  className={styles["signup-btn"]}
-                >
-                  CREATE ACCOUNT
-                </button>
-              </div>
             </div>
           </div>
         </div>
