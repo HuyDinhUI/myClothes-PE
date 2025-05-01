@@ -30,34 +30,25 @@ const itemVariants = {
 
 const Item = [
   {
-    title: "Info",
-    icon: <ContactsIcon />,
+    title: "Account Settings",
   },
   {
-    title: "Cart",
-    icon: <CartIcon />,
-  },
-  {
-    title: "Orders",
-    icon: <TransferIcon />,
+    title: "Order History",
   },
   {
     title: "Vouchers",
-    icon: <TagIcon />,
   },
   {
     title: "Setting",
-    icon: <GearIcon />,
   },
   {
     title: "Log out",
-    icon: <ExitIcon />,
   },
 ];
 
 const ItemUser = () => {
-  const {page} = useParams()
-  const navigate = useNavigate()
+  const { page } = useParams();
+  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -73,8 +64,7 @@ const ItemUser = () => {
             style={
               page === item.title
                 ? {
-                    color: "var(--white)",
-                    backgroundColor: "black",
+                    textDecorationLine: "underline",
                   }
                 : {}
             }
@@ -82,8 +72,8 @@ const ItemUser = () => {
             key={index}
             className={styles["btn-item"]}
           >
-            <div className={styles.icon}>{item.icon}</div>
             <p className={styles.title}>{item.title}</p>
+            
           </motion.button>
         );
       })}

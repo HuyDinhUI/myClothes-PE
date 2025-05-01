@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./info.module.scss";
 import { useForm } from "react-hook-form";
 import authorizedAxiosInstance from "../../../../utils/AthorizedAxios";
+import { Link } from "react-router-dom";
 
 const Info = ({ infoUser }) => {
   const [namebank, setNameBank] = useState(null);
@@ -34,149 +35,40 @@ const Info = ({ infoUser }) => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles["info-user"]}>
-            <div className={styles.avatar}>
-              <img
-                className={styles["img-avatar"]}
-                src={infoUser.avatar}
-              ></img>
+            <div className={styles["info-username"]}>
+              <h1>Hello, {infoUser.username.split(" ").pop()}</h1>
             </div>
-            <div className={styles.information}>
-              <form
-                onSubmit={handleSubmit(submitUpdateInfoUser)}
-                className={styles["form-info"]}
-              >
-                <input
-                  type="text"
-                  {...register("username", {
-                    required: "Email cannot be blank",
-                  })}
-                  placeholder="username"
-                  className={styles["input-info"]}
-                  value={infoUser.username}
-                ></input>
-                <input
-                  type="text"
-                  {...register("fullName", {
-                    required: "FullName cannot be blank",
-                  })}
-                  placeholder="fullname"
-                  className={styles["input-info"]}
-                  value={infoUser.fullName}
-                ></input>
-                <input
-                  type="text"
-                  {...register("phone", {
-                    required: "Phone cannot be blank",
-                  })}
-                  placeholder="phone number"
-                  className={styles["input-info"]}
-                  value={infoUser.phone}
-                ></input>
-                <input
-                  type="text"
-                  {...register("address")}
-                  placeholder="address"
-                  className={styles["input-info"]}
-                  value={infoUser.address}
-                ></input>
-                <input
-                  type="email"
-                  {...register("email", {
-                    required: "Email cannot be blank",
-                  })}
-                  placeholder="email"
-                  className={styles["input-info"]}
-                  value={infoUser.email}
-                ></input>
-                <button className={styles["btn-info"]}>save</button>
-              </form>
-            </div>
-          </div>
-          <div className={styles["info-card"]}>
-            <div className={styles["visa"]}>
-              <div className={styles.bank}>
-                <p>{namebank === null ? ".." : namebank}</p>
+            <div className={styles.profile}>
+              <div className={styles["profile-title"]}>
+                <h3>PROFILE</h3>
               </div>
-              <div className={styles["type-card"]}>
-                <p>{typecard === null ? "...." : typecard}</p>
-              </div>
-              <div className={styles["id-card"]}>
-                <p>{idcard === null ? ".... .... .... ...." : idcard}</p>
-              </div>
-              <div className={styles["name-own"]}>
-                <p>
-                  {namecard === null
-                    ? ".............."
-                    : namecard.toUpperCase()}
-                </p>
-              </div>
-              <div className={styles["value-thur"]}>
-                <p className={styles["title-value-thur"]}>
-                  {monththru === null ? ".." : monththru}
-                </p>
-                <p>/</p>
-                <p className={styles["title-value-thur"]}>
-                  {yearthru === null ? ".." : yearthru}
-                </p>
+              <div className={styles["profile-detail"]}>
+                <div className={styles["profile-detail-information"]}>
+                  <p><strong>{infoUser.username}</strong></p>
+                  <p>{infoUser.email}</p>
+                  <p>{infoUser.phone}</p>
+                  <div className={styles["profile-edit"]}>
+                    <Link to='/editprofile'>Edit</Link>
+                  </div>
+                </div>
+                <div className={styles["profile-detail-account"]}>
+                  <p>.........................</p>
+                  <div className={styles["profile-edit"]}>
+                    <Link to='/editaccount'>Edit</Link>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className={styles["form-info-card"]}>
-              <form className={styles["form-card"]}>
-                <select
-                  value={namebank}
-                  className={styles["input-card"]}
-                  onChange={(e) => setNameBank(e.target.value)}
-                >
-                  <option value disabled selected>
-                    Select bank name
-                  </option>
-                  <option value="MB">MB Bank</option>
-                  <option value="ACB">ACB Bank</option>
-                  <option>MBank</option>
-                </select>
-                <select
-                  value={typecard}
-                  className={styles["input-card"]}
-                  onChange={(e) => setTypeCard(e.target.value)}
-                >
-                  <option value disabled selected>
-                    Select type card
-                  </option>
-                  <option value={"VISA"}>Visa</option>
-                  <option value={"MASTERCARD"}>Mastercard</option>
-                </select>
-                <input
-                  value={idcard}
-                  onChange={(e) => SetIdCard(e.target.value)}
-                  className={styles["input-card"]}
-                  placeholder="id card"
-                ></input>
-                <input
-                  value={namecard}
-                  onChange={(e) => SetNameCard(e.target.value)}
-                  className={styles["input-card"]}
-                  placeholder="name"
-                ></input>
-                <input
-                  value={monththru}
-                  onChange={(e) => setMonthThru(e.target.value)}
-                  className={styles["input-card"]}
-                  placeholder="month due"
-                ></input>
-                <input
-                  value={yearthru}
-                  onChange={(e) => setYearThru(e.target.value)}
-                  className={styles["input-card"]}
-                  placeholder="year due"
-                ></input>
-                <input
-                  value={cvc}
-                  onChange={(e) => setCVC(e.target.value)}
-                  className={styles["input-card"]}
-                  placeholder="CVC"
-                ></input>
-                <button className={styles["btn-card"]}>save</button>
-              </form>
+            <div className={styles.address}>
+              <div className={styles["address-title"]}>
+                <h3>ADDRESS</h3>
+              </div>
+              <div className={styles["address-detail"]}>
+                <div className={styles["address-detail-information"]}>
+                  <p>{infoUser.address}</p>
+                  <div className={styles["profile-edit"]}><Link to='/editaddress'>Add</Link></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

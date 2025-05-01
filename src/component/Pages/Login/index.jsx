@@ -28,7 +28,7 @@ const Login = () => {
         data
       );
       if (res.data.role === "customer") {
-        navigate(`/dashboards/Info`);
+        navigate(`/dashboards/Account Settings`);
       } else navigate("/admin");
     } catch (error) {}
   };
@@ -40,7 +40,7 @@ const Login = () => {
           <div className={styles.router}>
             <Link to="/">Home</Link>
             <p>{">"}</p>
-            <Link to="/dashboards/info">Dashboard</Link>
+            <Link to="/dashboards/Account Settings">Dashboard</Link>
             <p>{">"}</p>
             <Link className={styles["router-current"]} to="/login">
               Log in

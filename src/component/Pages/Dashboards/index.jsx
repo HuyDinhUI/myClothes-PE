@@ -80,9 +80,9 @@ const Dashboards = () => {
               />
             }
           >
-            {page === "Info" && userInfo && <Info infoUser={userInfo} />}
+            {page === "Account Settings" && userInfo && <Info infoUser={userInfo} />}
             {page === "Cart" && <Cart />}
-            {page === "Orders" && <Orders />}
+            {page === "Order History" && <Orders />}
           </Suspense>
         </div>
       </div>

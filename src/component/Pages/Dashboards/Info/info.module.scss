@@ -1,185 +1,80 @@
 .wrapper {
   width: 100%;
   height: 100%;
+  
 }
 
 .container {
   width: 100%;
   height: 100%;
-  padding: 25px 15px;
+  
 
   .content {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
+    
 
     .info-user {
-      grid-area: 1 / 1 / 7 / 3;
       box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
+      
 
-      .avatar {
-        width: 300px;
-        height: 300px;
-        padding: 10px;
-        box-sizing: border-box;
-        border: 1px solid black;
-        border-radius: 15px;
-
-        .img-avatar {
-          width: 100%;
-          height: 100%;
-          border-radius: 15px;
-        }
-      }
-
-      .information {
-        width: 300px;
-
-        .form-info {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-
-          .input-info {
-            width: 100%;
-            height: 30px;
-            padding: 0 5px;
-            border: 1px solid black;
-            border-radius: 5px;
-
-            &:focus{
-                background-color: var(--antiquewhite);
-            }
-          }
-
-          .btn-info {
-            width: 100%;
-            height: 30px;
-            background-color: var(--black);
-            color: var(--white);
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.5s;
-
-            &:hover{
-                background-color: black;
-            }
-          }
-        }
-      }
-    }
-
-    .info-card {
-      grid-area: 1 / 3 / 7 / 7;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      box-sizing: border-box;
-
-      .visa {
-        width: 700px;
-        height: 300px;
-        border: 1px solid black;
-        border-radius: 15px;
-        box-sizing: border-box;
-        position: relative;
-        font-size: 30px;
-
-        .bank, .type-card, .id-card, .name-own, .value-thur{
-            position: absolute;
-        }
-
-        .bank{
-            top: 30px;
-            left: 30px;
-            font-weight: bold;
-        }
-
-        .type-card{
-            top: 30px;
-            right: 30px;
-            font-weight: bold;
-        }
-
-        .id-card{
-            top: 50%;
-            width: 80%;
-            transform: translate(0,-50%);
-            left: 30px;
-            display: flex;
-            justify-content: space-between;
-            
-        }
-
-        .name-own{
-            bottom: 30px;
-            left: 30px;
-        }
-
-        .value-thur{
-            bottom: 30px;
-            right: 30px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-
-            .title-value-thur{
-               font-weight: bold;
-            }
-        }
-
-      }
-
-      .form-info-card{
-        width: 700px;
+      .info-username{
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--grey);
         
-        .form-card{
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            grid-template-rows: repeat(6,1fr);
-            gap:10px;
-            
+      }
+
+      .profile{
+        display: flex;
+        padding-top: 20px;
+
+        .profile-title{
+          width: 30%;
         }
 
-        .input-card{
-            width: 100%;
-            height: 30px;
-            padding: 0 5px;
-            border: 1px solid black;
-            border-radius: 5px;
+        .profile-detail{
+          width: 70%;
 
-            &:focus{
-                background-color: var(--antiquewhite);
-            }
+          .profile-detail-information{
+            position: relative;
+          }
 
-            
-
-        }
-
-        .btn-card{
-            width: 100%;
-            height: 30px;
-            padding: 0 5px;
-            background-color: var(--black);
-            color: var(--white);
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.5s;
-
-            &:hover{
-                background-color: black;
-            }
+          .profile-detail-account{
+            position: relative;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--grey);
+            font-size: 50px;
+          }
         }
       }
+
+      .address{
+        display: flex;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid var(--grey);
+
+        .address-title{
+          width: 30%;
+        }
+
+        .address-detail{
+          width: 70%;
+
+          .address-detail-information{
+            position: relative;
+          }
+        }
+      }
+
+      .profile-edit{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        font-size: 15px;
+      }
+      
     }
   }
 }

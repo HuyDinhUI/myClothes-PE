@@ -17,6 +17,9 @@ import {
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { useEffect, useState } from "react";
 
+
+const slide_content = ['Share Your Dream','Sale Off 50%','For Anyone For Every Style']
+
 const Header = () => {
   const navigate = useNavigate();
 
@@ -51,12 +54,19 @@ const Header = () => {
     <div className={styles.wrapper}>
       <div className={styles["header-slider"]}>
         <div className={styles.slides}>
-          <div className={styles.slide}>
+          {slide_content.map(s => {
+            return (
+              <div className={styles.slide}>
+                <p>{s}</p>
+              </div>
+            )
+          })}
+          {/* <div className={styles.slide}>
             <p>Share Your Dream</p>
           </div>
           <div className={styles.slide}>
             <p>Save Off 50%</p>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={styles.container}>
@@ -72,7 +82,7 @@ const Header = () => {
             <CartIcon className={styles.cart}></CartIcon>
             <ContactsIcon
               className={styles.info}
-              onClick={() => navigate("/dashboards/Info")}
+              onClick={() => navigate("/dashboards/Account Settings")}
             ></ContactsIcon>
           </div>
         </div>
