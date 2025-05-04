@@ -13,17 +13,21 @@ import {
   ContactsIcon,
   CarIcon,
   CartIcon,
-  MenuIcon
+  MenuIcon,
 } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { useEffect, useState } from "react";
 
-
-const slide_content = ['Share Your Dream','Sale Off 50%','For Anyone For Every Style']
+const slide_content = [
+  "Share Your Dream",
+  "For Anyone For Every Style",
+  '"MyClothes – Wear Your Story."',
+];
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const [slideIndex,setSlideIndex] = useState(1)
+  const [slideIndex, setSlideIndex] = useState(1);
+  const text = "myClothes"
 
   function showSlide(n) {
     const slides = document.querySelectorAll(`.${styles.slide}`);
@@ -40,45 +44,40 @@ const Header = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSlideIndex((prev) => prev + 1)
+      setSlideIndex((prev) => prev + 1);
     }, 5000);
 
     return () => clearInterval(interval);
-  },[]);
+  }, []);
 
-  useEffect(()=>{
-    showSlide(slideIndex)
-  },[slideIndex])
+  useEffect(() => {
+    showSlide(slideIndex);
+  }, [slideIndex]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles["header-slider"]}>
         <div className={styles.slides}>
-          {slide_content.map(s => {
+          {slide_content.map((s) => {
             return (
               <div className={styles.slide}>
                 <p>{s}</p>
               </div>
-            )
+            );
           })}
-          {/* <div className={styles.slide}>
-            <p>Share Your Dream</p>
-          </div>
-          <div className={styles.slide}>
-            <p>Save Off 50%</p>
-          </div> */}
         </div>
       </div>
       <div className={styles.container}>
         <div className={styles["sidebar-icon"]}>
           <MenuIcon></MenuIcon>
         </div>
-        <h1 className={styles.title}>MyClothes</h1>
+        <div className={styles.title}>
+          <img width="50" height="70" src="https://s3.us-east-2.amazonaws.com/asset-uploads.agent.ai/8e75e401dd2beb114327f16f5f2d78ae0f0f775be9173c4efaa8533d_tmpxe88fw8o.jpg"></img>
+          <p>MyClothes</p>
+        </div>
         <div className={styles["navbar-items"]}>
           <div className={styles["item"]}>
-            <Popper>
-              <SearchIcon className={styles["icon-search"]}></SearchIcon>
-            </Popper>
+            <SearchIcon className={styles["icon-search"]}></SearchIcon>
             <CartIcon className={styles.cart}></CartIcon>
             <ContactsIcon
               className={styles.info}

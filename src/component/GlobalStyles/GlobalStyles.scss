@@ -16,8 +16,8 @@
   --black: black;
   --white: #fff;
   --text-color: rgb(22, 24, 35);
-  --font-brand-logo: "Playwrite ZA";
-  --font-brand-heading: "Montserrat", sans-serif;
+  --font-text-heading: "Pacifico", cursive;
+  --font-text: "Montserrat", sans-serif;
   --width-default: 95%;
   --fail-color: #f21b3f;
   --success-color: #29bf12;
@@ -58,7 +58,7 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-text);
   font-size: 1.6rem;
   line-height: 1.5;
   color: var(--text-color);

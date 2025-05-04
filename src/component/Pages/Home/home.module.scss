@@ -11,7 +11,6 @@
   display: flex;
   flex-direction: column;
 
-
   .container-hero {
     width: 100%;
     overflow: hidden;
@@ -26,5 +25,75 @@
       height: auto;
       object-fit: cover;
     }
+
+    .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh; /* Căn giữa dọc toàn màn hình */
+
+      .handwriting-svg {
+        height: 150px;
+        width: 1000px;
+
+        .handwriting-letter {
+          fill: transparent;
+          opacity: 0;
+          stroke: #000;
+          stroke-width: 1.5;
+          font-size: 60px;
+          font-family: var(--font-text-heading);
+          stroke-dasharray: 150;
+          stroke-dashoffset: 150;
+          animation: fadeIn 0s linear forwards var(--delay),
+          draw 0.8s ease forwards var(--delay),
+          fill 0.5s ease forwards calc(var(--delay) + 0.8s);
+          
+        }
+      }
+
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes fill {
+        to {
+          fill: #000; /* Hoặc màu khác */
+        }
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+    }
   }
+
+  #collections{
+    padding: 50px;
+
+    .collections-title{
+      font-family: var(--font-text-heading);
+      text-align: center;
+      font-weight: 300;
+    }
+
+    .grid-collections{
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 10px;
+
+      .card-collections{
+
+        img{
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
 }
