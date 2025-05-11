@@ -9,6 +9,7 @@ import { style } from "@mui/system";
 import { useState, useEffect } from "react";
 import calculateTimeLeft from "../../../utils/TimeLeft";
 import { useAuth0 } from "@auth0/auth0-react";
+import { GoogleIcon } from "../../../assets/Icon";
 
 const Login = () => {
   const { loginWithRedirect } = useAuth0();
@@ -39,9 +40,9 @@ const Login = () => {
         <div className={styles.content}>
           <div className={styles.router}>
             <Link to="/">Home</Link>
-            <p>{">"}</p>
+            <p>{"/"}</p>
             <Link to="/dashboards/Account Settings">Dashboard</Link>
-            <p>{">"}</p>
+            <p>{"/"}</p>
             <Link className={styles["router-current"]} to="/login">
               Log in
             </Link>
@@ -90,7 +91,7 @@ const Login = () => {
                   }
                   className={styles.AuthO}
                 >
-                  <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
+                  <GoogleIcon/>
                   <p>Log in with Google</p>
                 </div>
                 <p>

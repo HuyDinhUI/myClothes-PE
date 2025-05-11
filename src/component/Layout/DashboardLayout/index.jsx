@@ -12,7 +12,7 @@ const DashBoardLayout = ({ children }) => {
       <Header />
       <div className={styles.router}>
         <Link to="/">Home</Link>
-        <p>{">"}</p>
+        <p>{"/"}</p>
         <Link
           className={styles["router-current"]}
           to="/dashboards/Account Settings"

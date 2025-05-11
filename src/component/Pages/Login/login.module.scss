@@ -23,7 +23,7 @@
       display: flex;
       gap: 10px;
       font-weight: 300;
-      border-bottom: 1px solid var(--grey);
+      font-size: 13px;
 
       .router-current {
         font-weight: 500;
@@ -102,16 +102,13 @@
       .submit-btn {
         width: 100%;
         font-weight: 700;
-        color: var(--black);
+        color: var(--white);
         padding: 20px 0;
-        border: 1px solid var(--black);
         transition: 0.5s;
         margin-top: 20px;
+        background-color: var(--black);
 
-        &:hover{
-          background-color: var(--black);
-          color: var(--white);
-        }
+        
       }
 
       .signup {
@@ -128,9 +125,9 @@
       .AuthO {
         width: 100%;
         font-weight: 700;
-        color: var(--white);
+        
         padding: 10px 0;
-        background-color: var(--fail-color);
+        border: 1px solid var(--black);
         transition: 0.5s;
         display: flex;
         align-items: center;
@@ -140,7 +137,7 @@
         margin-top: 10px;
 
         p{
-          color: var(--white);
+          color: var(--black);
         }
       }
     }

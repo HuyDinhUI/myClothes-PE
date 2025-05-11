@@ -16,7 +16,7 @@
   --black: black;
   --white: #fff;
   --text-color: rgb(22, 24, 35);
-  --font-text-heading: "Pacifico", cursive;
+  --font-text-heading: "StretchPro";
   --font-text: "Montserrat", sans-serif;
   --width-default: 95%;
   --fail-color: #f21b3f;
@@ -29,6 +29,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -38,7 +39,7 @@ html {
 
   ::-webkit-scrollbar {
     width: 3px; /* Chiều rộng của thanh cuộn dọc */
-    height: 8px; /* Chiều cao của thanh cuộn ngang */
+    height: 3px; /* Chiều cao của thanh cuộn ngang */
     border-radius: none;
   }
 

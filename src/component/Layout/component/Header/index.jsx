@@ -8,14 +8,14 @@ import {
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import Popper from "../../../Popper";
 import { Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { m } from "framer-motion";
 import {
-  SearchIcon,
-  ContactsIcon,
-  CarIcon,
+  UserIcon,
   CartIcon,
   MenuIcon,
-} from "@bitcoin-design/bitcoin-icons-react/outline";
-import { useEffect, useState } from "react";
+  SearchIcon,
+} from "../../../../assets/Icon";
 
 const slide_content = [
   "Share Your Dream",
@@ -23,11 +23,30 @@ const slide_content = [
   '"MyClothes – Wear Your Story."',
 ];
 
+const navbar_items = [
+  {
+    title: "ABOUT",
+    to: "/about",
+  },
+  {
+    title: "SHOP",
+    to: "/shop",
+  },
+  {
+    title: "HOME",
+    to: "/",
+  },
+  {
+    title: "CONTACT US",
+    to: "/contact",
+  },
+];
+
 const Header = () => {
   const navigate = useNavigate();
 
   const [slideIndex, setSlideIndex] = useState(1);
-  const text = "myClothes"
+  const text = "myClothes";
 
   function showSlide(n) {
     const slides = document.querySelectorAll(`.${styles.slide}`);
@@ -71,19 +90,21 @@ const Header = () => {
         <div className={styles["sidebar-icon"]}>
           <MenuIcon></MenuIcon>
         </div>
-        <div className={styles.title}>
-          <img width="50" height="70" src="https://s3.us-east-2.amazonaws.com/asset-uploads.agent.ai/8e75e401dd2beb114327f16f5f2d78ae0f0f775be9173c4efaa8533d_tmpxe88fw8o.jpg"></img>
+        {/* <div className={styles.title}>
           <p>MyClothes</p>
-        </div>
+        </div> */}
         <div className={styles["navbar-items"]}>
-          <div className={styles["item"]}>
-            <SearchIcon className={styles["icon-search"]}></SearchIcon>
-            <CartIcon className={styles.cart}></CartIcon>
-            <ContactsIcon
-              className={styles.info}
-              onClick={() => navigate("/dashboards/Account Settings")}
-            ></ContactsIcon>
-          </div>
+          {navbar_items.map((item) => {
+            return <Link to={item.to}>{item.title}</Link>;
+          })}
+        </div>
+        <div className={styles["user-items"]}>
+          <SearchIcon style={{ cursor: "pointer" }}></SearchIcon>
+          <CartIcon style={{ cursor: "pointer" }}></CartIcon>
+          <UserIcon
+            style={{ cursor: "pointer" }}
+            onclick={() => navigate("/dashboards/Account Settings")}
+          ></UserIcon>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 .wrapper {
-  margin-top: 20px;
+  margin-top: 50px;
   position: relative;
 }
 
@@ -15,40 +15,64 @@
     width: 100%;
     overflow: hidden;
     height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    img {
-      display: block;
-      max-width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .title {
+    .hero-background {
+      margin-top: 10px;
+      background-color: var(--grey);
+      width: 100%;
+      height: 400px;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 70vh; /* Căn giữa dọc toàn màn hình */
+      position: relative;
+
+      p {
+        font-size: 100px;
+        position: absolute;
+        z-index: 999;
+        -webkit-text-stroke: 2px;
+        -webkit-text-stroke-color: white;
+        color: var(--white);
+        font-family: var(--font-text-heading);
+      }
+    }
+
+    img {
+      position: absolute;
+      width: 650px;
+      height: auto;
+      object-fit: cover;
+      top: 0px;
+    }
+  }
+
+  #brand {
+    height: 200px;
+    position: absolute;
+    top: 0px;
+
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 90%; /* Căn giữa dọc toàn màn hình */
 
       .handwriting-svg {
-        height: 150px;
-        width: 1000px;
+        height: 200px;
+        width: 1200px;
 
         .handwriting-letter {
           fill: transparent;
           opacity: 0;
-          stroke: #000;
-          stroke-width: 1.5;
-          font-size: 60px;
           font-family: var(--font-text-heading);
-          stroke-dasharray: 150;
-          stroke-dashoffset: 150;
+          font-size: 170px;
+          font-weight: bold;
           animation: fadeIn 0s linear forwards var(--delay),
-          draw 0.8s ease forwards var(--delay),
-          fill 0.5s ease forwards calc(var(--delay) + 0.8s);
-          
+            fill 0.5s ease forwards calc(var(--delay));
         }
       }
 
@@ -59,7 +83,7 @@
       }
       @keyframes fill {
         to {
-          fill: #000; /* Hoặc màu khác */
+          fill: var(--black); /* Hoặc màu khác */
         }
       }
       @keyframes fadeIn {
@@ -70,30 +94,109 @@
     }
   }
 
-  #collections{
-    padding: 50px;
+  #collections {
+    padding: 20px;
 
-    .collections-title{
-      font-family: var(--font-text-heading);
-      text-align: center;
-      font-weight: 300;
+    .collections-title {
+      padding: 0 50px;
+      h2 {
+        font-weight: 500;
+        font-size: 40px;
+        text-align: center;
+      }
     }
 
-    .grid-collections{
+    .grid-collections {
+      padding: 20px 50px;
       margin-top: 50px;
       display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 10px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
 
-      .card-collections{
-
-        img{
+      .card-collections {
+        position: relative;
+        img {
           object-fit: cover;
           width: 100%;
           height: 100%;
+          border-radius: 5px;
+        }
+
+        p {
+          font-size: 20px;
+          text-align: center;
         }
       }
     }
   }
 
+  #Arrivals {
+    padding: 20px;
+
+    .arrivals-title {
+      padding: 0 50px;
+      h2 {
+        font-weight: 500;
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+
+    .grid-arrivals {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 20px 50px;
+      margin-top: 50px;
+      gap: 30px;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        background-color: var(--grey);
+        border-radius: 5px;
+      }
+    }
+  }
+
+  #trending {
+    padding: 50px 0px;
+    
+    
+    .trending-title {
+      padding: 0 50px;
+      h2 {
+        font-weight: 500;
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+
+    .scroll-trending {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 50px 0;
+      margin: 0 50px;
+
+      .grid-trending {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 30px;
+
+        .card-trending {
+          flex-shrink: 0;
+          width: 400px;
+          padding: 20px 20px;
+
+          img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            background-color: var(--grey);
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
 }
